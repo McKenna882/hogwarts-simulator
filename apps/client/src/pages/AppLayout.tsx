@@ -30,6 +30,7 @@ import HogwartsAcademyBackground from '../components/HogwartsAcademyBackground';
 import { useChatStore } from '../stores/chatStore';
 import { useUIStore } from '../stores/uiStore';
 import { useSocket } from '../hooks/useSocket';
+import { installAudioUnlock } from '../utils/audioUnlock';
 
 const ANNOUNCEMENT_VERSION = '2026-06-02';
 const MANUAL_VERSION = '2026-06-02';
@@ -90,6 +91,12 @@ export default function AppLayout() {
   useEffect(() => {
     const audio = audioRef.current;
     if (!audio) return;
+    const cleanupUnlock = installAudioUnlock({
+      getAudio: () => audioRef.current,
+      volume: 0.32,
+      onPlaying: () => setMusicEnabled(true),
+    });
+
     audio.loop = true;
     audio.volume = 0.32;
     if (musicEnabled) {
@@ -99,6 +106,7 @@ export default function AppLayout() {
     }
 
     return () => {
+      cleanupUnlock();
       if (fadeTimerRef.current) {
         window.clearInterval(fadeTimerRef.current);
       }

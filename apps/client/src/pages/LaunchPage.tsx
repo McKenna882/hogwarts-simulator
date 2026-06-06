@@ -5,6 +5,7 @@ import { ArrowRight, Castle, DoorOpen, Sparkles, Ticket, TrainFront, Volume2, Vo
 import MagicLoadingScreen from '../components/MagicLoadingScreen';
 import ThreeLaunchScene from '../components/ThreeLaunchScene';
 import { useAuthStore } from '../stores/authStore';
+import { installAudioUnlock } from '../utils/audioUnlock';
 
 type LaunchStage = 'station' | 'transition' | 'academy';
 
@@ -20,7 +21,14 @@ export default function LaunchPage() {
   const fadeTimerRef = useRef<number | null>(null);
 
   useEffect(() => {
+    const cleanupUnlock = installAudioUnlock({
+      getAudio: () => audioRef.current,
+      volume: 0.42,
+      onPlaying: () => setMusicEnabled(true),
+    });
+
     return () => {
+      cleanupUnlock();
       if (fadeTimerRef.current) {
         window.clearInterval(fadeTimerRef.current);
       }

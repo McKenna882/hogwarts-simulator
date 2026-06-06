@@ -65,7 +65,7 @@ export default function RegisterPage() {
       setUser(user);
       navigate('/app/owl', { replace: true });
     } catch (err: any) {
-      setError(err.response?.data?.message || '入学登记失败，请稍后再试');
+      setError(err.response?.data?.message || err.message || '入学登记失败，请稍后再试');
       setRegisterState('failed');
     }
   };

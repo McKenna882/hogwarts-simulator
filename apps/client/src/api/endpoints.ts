@@ -1,11 +1,42 @@
 import client from './client';
+import {
+  hasAuthPayload,
+  localLogin,
+  localRegister,
+  shouldUseLocalAuthFallback,
+} from '../utils/localAuth';
+
+async function withLocalAuthFallback<T>(request: () => Promise<T>, fallback: () => Promise<T>) {
+  if (!shouldUseLocalAuthFallback()) {
+    return request();
+  }
+
+  try {
+    const response: any = await request();
+    if (hasAuthPayload(response?.data)) {
+      return response;
+    }
+    return fallback();
+  } catch (error: any) {
+    if (error?.response?.data?.message) {
+      throw error;
+    }
+    return fallback();
+  }
+}
 
 export const authApi = {
   register(email: string, password: string, referralCode?: string) {
-    return client.post('/auth/register', { email, password, referralCode });
+    return withLocalAuthFallback(
+      () => client.post('/auth/register', { email, password, referralCode }),
+      () => localRegister(email, password) as any,
+    );
   },
   login(email: string, password: string) {
-    return client.post('/auth/login', { email, password });
+    return withLocalAuthFallback(
+      () => client.post('/auth/login', { email, password }),
+      () => localLogin(email, password) as any,
+    );
   },
   refresh(refreshToken: string) {
     return client.post('/auth/refresh', { refreshToken });

@@ -6,6 +6,7 @@ import { authApi } from '../api/endpoints';
 import MagicLoadingScreen from '../components/MagicLoadingScreen';
 import ThreeLaunchScene from '../components/ThreeLaunchScene';
 import { useAuthStore } from '../stores/authStore';
+import { installAudioUnlock } from '../utils/audioUnlock';
 
 type LoginState = 'idle' | 'checking' | 'entering' | 'failed';
 
@@ -35,6 +36,12 @@ export default function LoginPage() {
   useEffect(() => {
     const audio = audioRef.current;
     if (!audio) return;
+    const cleanupUnlock = installAudioUnlock({
+      getAudio: () => audioRef.current,
+      volume: 0.28,
+      onPlaying: () => setMusicEnabled(true),
+    });
+
     audio.loop = true;
     audio.volume = 0.28;
     audio.play().catch(() => {
@@ -42,6 +49,7 @@ export default function LoginPage() {
     });
 
     return () => {
+      cleanupUnlock();
       if (fadeTimerRef.current) {
         window.clearInterval(fadeTimerRef.current);
       }
@@ -122,7 +130,7 @@ export default function LoginPage() {
       navigate('/app/owl', { replace: true });
     } catch (err: any) {
       setLoginState('failed');
-      setErrorMsg(err.response?.data?.message || '墙壁没有让你通过，请检查邮箱或密码');
+      setErrorMsg(err.response?.data?.message || err.message || '墙壁没有让你通过，请检查邮箱或密码');
     }
   };
 

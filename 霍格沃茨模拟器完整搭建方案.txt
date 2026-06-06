@@ -1,0 +1,1522 @@
+﻿霍格沃茨模拟器完整搭建方案
+生成日期：2026-06-02
+
+一、项目定位
+
+本项目可定位为“霍格沃茨魔法即时通讯 + AI 角色扮演 + 学院成长养成”的综合网页应用。
+
+核心体验不是传统游戏官网，而是一个沉浸式魔法社交系统：
+1. 用户以“巫师”身份进入系统。
+2. 可以和哈利波特世界观角色私聊或群聊。
+3. 可以在魔法圈发布动态。
+4. 可以参与学院杯、每日任务、答题、决斗、魁地奇等成长玩法。
+5. 可以通过金库、对角巷、有求必应屋形成货币、商店、家园、宠物养成闭环。
+
+二、已观察到的现有功能
+
+1. 账号系统
+
+- 邮箱登录。
+- 密码登录，密码提示至少 6 位。
+- 注册账号。
+- 忘记密码入口。
+- 注册页支持推荐码，推荐码为选填。
+- 页面提示注册应使用真实邮箱。
+- 云端数据与账号绑定。
+- 支持多设备同步。
+
+2. 主界面
+
+- 产品名称：猫头鹰邮局。
+- 副标题：魔法即时通讯。
+- 侧边栏显示金币余额，例如 12G。
+- 侧边栏显示对角巷入口。
+- 顶部有外部链接、公告栏、入学手册或更新日志入口。
+- 主界面包括魔法群聊、巫师列表、搜索角色、星标角色等。
+
+3. 猫头鹰入口
+
+该入口是核心聊天页。
+
+功能建议：
+- 角色私聊。
+- 魔法群聊。
+- 搜索角色。
+- 星标角色。
+- 角色头像、身份、年级、简介展示。
+- 官方客服或 FAQ 角色。
+- AI 角色回复。
+- 聊天历史云端保存。
+
+已见角色示例：
+- 不懂代码的博主，官方客服。
+- 哈利·波特，六年级，魁地奇队长。
+- 赫敏·格兰杰，六年级，格兰芬多级长。
+- 罗恩·韦斯莱，六年级，格兰芬多级长。
+- 金妮·韦斯莱，五年级，O.W.L.s 考生。
+- 纳威·隆巴顿，六年级，草药学天才。
+- 弗雷德·韦斯莱，毕业生，笑话商店老板。
+- 乔治·韦斯莱，毕业生，笑话商店老板。
+- 米勒娃·麦格，变形术教授与副校长。
+- 阿不思·邓布利多，霍格沃茨校长。
+- 鲁伯·海格，猎场看守。
+- 小天狼星·布莱克，哈利的教父。
+- 莱姆斯·卢平，黑魔法防御术教授，狼人。
+- 德拉科·马尔福，六年级，斯莱特林级长。
+- 西弗勒斯·斯内普，魔药课教授，斯莱特林院长。
+- 贝拉特里克斯，莱斯特兰奇夫人。
+- 卢娜·洛夫古德，五年级，O.W.L.s 考生。
+- 秋·张，七年级。
+- 纽特·斯卡曼德，神奇动物学家。
+- 盖勒特·格林德沃，初代黑魔王。
+
+4. 魔法圈入口
+
+该入口类似朋友圈或动态广场。
+
+已观察功能：
+- 当前用户展示为“无名 巫师”。
+- 输入框文案：分享你的魔法时刻...（使用 @ 提及好友）。
+- 支持图片上传。
+- 支持发表动态。
+- 页面空状态：暂时没有动态。快来分享你的第一条魔法见闻吧！
+- 右上角有删除按钮。
+- 右上角有刷新按钮。
+
+建议补充功能：
+- 点赞。
+- 评论。
+- 转发。
+- 只看好友。
+- 学院动态筛选。
+- 角色动态。
+- 动态任务奖励，例如每日发布一次动态获得学院分。
+- 图片审核。
+- 敏感内容过滤。
+
+5. 学院杯入口
+
+该入口是积分、任务、竞技、学院荣誉系统。
+
+已观察功能：
+- 标题：学院杯。
+- 展示学院积分。
+- 四大学院积分进度条。
+
+已观察积分：
+- 格兰芬多：54,420。
+- 斯莱特林：85,995。
+- 拉文克劳：26,815。
+- 赫奇帕奇：12,825。
+
+已观察玩法：
+- 决斗俱乐部（测试中）：霍格沃茨 1v1 卡牌对战。
+- 魁地奇球场：提示需先在个人资料中加入球队。
+- 布告栏：每日任务，0/3。
+- 写论文：每日答题，0/1。
+
+建议补充：
+- 每日任务列表。
+- 完成任务获得学院分、金币、经验。
+- 每周学院排名结算。
+- 学院赛季奖励。
+- 决斗排行榜。
+- 魁地奇队伍报名、匹配、积分。
+- 论文答题题库和答题奖励。
+
+6. 有求必应屋入口
+
+该入口是家园、解锁、宠物或养成系统。
+
+已观察功能：
+- 标题：有求必应屋。
+- 主文案：墙还没完全为你打开。
+- 说明：有求必应屋像一间只认主人的秘密温室。先拿到它的钥匙，它才会在底栏里真正变成你的家园和龙舍。
+- 当前提示：现在它还像一堵普通墙，但它记得真正需要它的人。
+
+已观察解锁路线：
+
+路线一：加入 D.A.
+- 说明：在主线里获得 D.A. 的信任后，这扇门会承认你是自己人。
+- 状态：尚未解锁。
+
+路线二：通过多比 / S.P.E.W.
+- 说明：沿着多比和赫敏的支线，把这间房当作一份悄悄送来的礼物。
+- 状态：尚未解锁。
+
+首发玩法：养龙。
+- 神奇动物园会出售三种龙蛋。
+- 每枚龙蛋价格：100G。
+- 买到蛋后，把它带进有求必应屋孵化。
+- 幼龙和成年龙每天都要喂食。
+- 每次喂食都要消耗 1 个苹果条。
+
+建议补充：
+- 解锁进度条。
+- 当前缺少条件提示。
+- 家园装饰。
+- 龙舍。
+- 龙蛋孵化倒计时。
+- 幼龙成长阶段。
+- 喂食、互动、命名。
+- 龙产出奖励。
+- 家园拜访。
+
+7. 金库入口
+
+该入口是货币、签到、兑换、推荐系统。
+
+已观察功能：
+- 弹窗标题：古灵阁金库。
+- 英文副标题：Gringotts Wizarding Bank。
+- 当前余额：12 Galleons。
+- 签到状态：今日已签到。
+- 提示：明天再来领取津贴吧。
+
+已观察入口：
+- 麻瓜货币兑换入口。
+- 推荐官计划。
+- 麻瓜货币兑换。
+- 输入兑换凭证（CARD KEY）。
+- 兑换按钮。
+- 古灵阁服务。
+
+建议补充：
+- 每日签到奖励。
+- 连续签到奖励。
+- 金币流水。
+- 兑换码兑换。
+- 推荐码绑定。
+- 推荐奖励记录。
+- 充值记录。
+- 退款说明。
+- 余额变动通知。
+
+8. 对角巷入口
+
+对角巷应作为商店总入口。
+
+从已观察功能推断，它至少应连接：
+- 金库余额。
+- 麻瓜货币兑换。
+- 推荐官计划。
+- 神奇动物园。
+- 龙蛋购买。
+- 苹果条等喂养材料。
+- 有求必应屋养成玩法。
+
+建议店铺分类：
+
+1）古灵阁
+- 金币余额。
+- 签到。
+- 兑换码。
+- 推荐奖励。
+- 充值或兑换。
+- 金币流水。
+
+2）神奇动物园
+- 三种龙蛋。
+- 宠物蛋。
+- 宠物食物。
+- 苹果条。
+- 宠物互动道具。
+
+3）韦斯莱魔法把戏坊
+- 聊天特效。
+- 表情包。
+- 趣味道具。
+- 群聊小游戏道具。
+- 限时恶作剧卡。
+
+4）丽痕书店
+- 论文答题道具。
+- 学习笔记。
+- 题库提示卡。
+- 角色背景书。
+- 学院积分加成道具。
+
+5）摩金夫人长袍店
+- 头像框。
+- 巫师袍。
+- 称号。
+- 名片皮肤。
+- 学院主题装扮。
+
+6）蜂蜜公爵
+- 糖果。
+- 宠物食物。
+- 聊天赠礼。
+- 好感度道具。
+
+7）奥利凡德魔杖店
+- 魔杖外观。
+- 魔杖属性。
+- 决斗加成。
+- 入学仪式道具。
+
+8）咿啦猫头鹰商店
+- 通讯皮肤。
+- 信件样式。
+- 聊天背景。
+- 群聊装饰。
+
+9）有求必应屋家居店
+- 家具。
+- 壁纸。
+- 龙舍装饰。
+- 互动摆件。
+
+三、完整产品架构
+
+1. 用户层
+
+- 用户注册。
+- 用户登录。
+- 邮箱验证。
+- 忘记密码。
+- 推荐码绑定。
+- 用户资料。
+- 学院选择。
+- 加入球队。
+- 头像与称号。
+- 背包。
+- 钱包。
+- 个人设置。
+
+2. AI 角色层
+
+- 角色管理。
+- 角色卡。
+- 角色头像。
+- 角色身份。
+- 角色提示词。
+- 角色记忆。
+- 角色好感度。
+- 角色关系网。
+- 对话风格。
+- 禁止越界内容规则。
+
+3. 聊天层
+
+- 私聊。
+- 群聊。
+- 流式 AI 回复。
+- 聊天记录。
+- 消息撤回。
+- 图片消息。
+- 角色提及。
+- 群聊成员。
+- 群聊创建。
+- 群聊消耗规则。
+- 聊天上下文摘要。
+
+4. 社交层
+
+- 魔法圈动态。
+- 发图。
+- @好友。
+- 点赞。
+- 评论。
+- 删除。
+- 举报。
+- 内容审核。
+- 好友系统。
+- 角色动态。
+
+5. 任务层
+
+- 每日任务。
+- 布告栏任务。
+- 写论文答题。
+- 主线任务。
+- 支线任务。
+- D.A. 路线。
+- S.P.E.W. 路线。
+- 学院贡献。
+- 任务奖励。
+
+6. 学院层
+
+- 学院积分。
+- 学院排行榜。
+- 学院杯赛季。
+- 学院成员。
+- 学院任务。
+- 学院称号。
+- 学院结算奖励。
+
+7. 竞技层
+
+- 决斗俱乐部。
+- 1v1 卡牌对战。
+- 卡牌背包。
+- 卡组配置。
+- 排位积分。
+- 魁地奇球队。
+- 魁地奇报名。
+- 魁地奇比赛。
+
+8. 商城层
+
+- 对角巷。
+- 商店列表。
+- 商品列表。
+- 商品详情。
+- 商品购买。
+- 商品库存。
+- 限购。
+- 折扣。
+- 购买记录。
+- 背包发放。
+
+9. 经济层
+
+- 金库余额。
+- 金币流水。
+- 签到奖励。
+- 推荐奖励。
+- 兑换码。
+- 充值或外部兑换。
+- 订阅。
+- 订单。
+- 风控。
+
+10. 家园宠物层
+
+- 有求必应屋。
+- 家园解锁。
+- 家具装饰。
+- 龙蛋购买。
+- 龙蛋孵化。
+- 幼龙成长。
+- 喂食。
+- 苹果条消耗。
+- 龙等级。
+- 龙产出。
+- 家园拜访。
+
+四、推荐技术架构
+
+1. 前端技术
+
+推荐方案：
+- React + TypeScript + Vite。
+- 状态管理：Zustand。
+- 路由：React Router。
+- UI 动效：Framer Motion。
+- 图标：Lucide 或自定义魔法主题图标。
+- 样式：Tailwind CSS 或 CSS Modules。
+- 实时通信：WebSocket 或 SSE。
+
+前端页面结构：
+- /login 登录。
+- /register 注册。
+- /forgot-password 忘记密码。
+- /app/owl 猫头鹰聊天页。
+- /app/circle 魔法圈。
+- /app/house-cup 学院杯。
+- /app/room 有求必应屋。
+- /app/diagon-alley 对角巷。
+- /app/vault 古灵阁金库。
+- /app/settings 设置。
+- /app/profile 个人资料。
+
+2. 后端技术
+
+推荐方案：
+- Node.js + NestJS 或 Fastify。
+- 数据库：PostgreSQL。
+- 缓存：Redis。
+- 对象存储：Cloudflare R2、S3 或阿里云 OSS。
+- AI 服务：OpenAI 兼容接口、Claude、Gemini 或本地模型代理。
+- 鉴权：JWT + Refresh Token。
+- 实时消息：WebSocket Gateway 或 SSE。
+
+3. 部署方案
+
+开发环境：
+- 前端 Vite dev server。
+- 后端 Node server。
+- PostgreSQL 本地或 Docker。
+- Redis 本地或 Docker。
+
+生产环境：
+- 前端部署到 Vercel、Cloudflare Pages 或 Nginx。
+- 后端部署到云服务器、Railway、Render、Fly.io 或 Docker。
+- 数据库使用 Supabase、Neon、RDS 或自建 PostgreSQL。
+- Redis 使用 Upstash、云 Redis 或自建。
+- 图片存储使用 R2、S3 或 OSS。
+
+五、核心数据表设计
+
+1. users 用户表
+
+字段建议：
+- id。
+- email。
+- password_hash。
+- display_name。
+- avatar_url。
+- house。
+- referral_code。
+- referred_by。
+- created_at。
+- updated_at。
+
+2. user_profiles 用户资料表
+
+- user_id。
+- nickname。
+- wizard_title。
+- grade。
+- team。
+- bio。
+- selected_badge。
+- selected_frame。
+
+3. wallets 钱包表
+
+- id。
+- user_id。
+- balance_galleons。
+- created_at。
+- updated_at。
+
+4. wallet_transactions 金币流水表
+
+- id。
+- user_id。
+- amount。
+- type。
+- source。
+- description。
+- order_id。
+- created_at。
+
+5. characters 角色表
+
+- id。
+- name。
+- avatar_url。
+- house。
+- grade。
+- title。
+- description。
+- system_prompt。
+- greeting。
+- visibility。
+- created_at。
+
+6. conversations 会话表
+
+- id。
+- type，private 或 group。
+- title。
+- owner_id。
+- character_id。
+- created_at。
+
+7. conversation_members 会话成员表
+
+- conversation_id。
+- member_type，user 或 character。
+- member_id。
+- role。
+
+8. messages 消息表
+
+- id。
+- conversation_id。
+- sender_type。
+- sender_id。
+- content。
+- image_url。
+- token_count。
+- created_at。
+
+9. posts 魔法圈动态表
+
+- id。
+- user_id。
+- content。
+- image_url。
+- visibility。
+- created_at。
+
+10. post_likes 点赞表
+
+- id。
+- post_id。
+- user_id。
+- created_at。
+
+11. post_comments 评论表
+
+- id。
+- post_id。
+- user_id。
+- content。
+- created_at。
+
+12. houses 学院表
+
+- id。
+- name。
+- color。
+- crest_url。
+- points。
+
+13. house_point_logs 学院积分流水
+
+- id。
+- user_id。
+- house。
+- points。
+- source。
+- description。
+- created_at。
+
+14. tasks 任务表
+
+- id。
+- title。
+- description。
+- type。
+- reward_galleons。
+- reward_points。
+- reset_rule。
+
+15. user_tasks 用户任务表
+
+- id。
+- user_id。
+- task_id。
+- progress。
+- status。
+- completed_at。
+
+16. quizzes 论文答题表
+
+- id。
+- question。
+- options_json。
+- answer。
+- reward_points。
+- reward_galleons。
+
+17. shops 商店表
+
+- id。
+- name。
+- description。
+- icon。
+- sort_order。
+
+18. products 商品表
+
+- id。
+- shop_id。
+- name。
+- description。
+- price_galleons。
+- item_type。
+- item_payload_json。
+- stock。
+- limit_per_user。
+- available_from。
+- available_to。
+
+19. orders 订单表
+
+- id。
+- user_id。
+- product_id。
+- quantity。
+- total_price。
+- status。
+- created_at。
+
+20. inventory 背包表
+
+- id。
+- user_id。
+- item_type。
+- item_id。
+- quantity。
+- metadata_json。
+- created_at。
+
+21. pets 宠物表
+
+- id。
+- user_id。
+- species。
+- name。
+- stage，egg、baby、adult。
+- level。
+- hunger。
+- hatched_at。
+- last_fed_at。
+
+22. room_unlocks 有求必应屋解锁表
+
+- id。
+- user_id。
+- route。
+- progress。
+- unlocked_at。
+
+23. referral_rewards 推荐奖励表
+
+- id。
+- referrer_id。
+- referred_user_id。
+- reward_type。
+- reward_amount。
+- status。
+- created_at。
+
+24. redeem_codes 兑换码表
+
+- id。
+- code_hash。
+- reward_type。
+- reward_payload_json。
+- max_uses。
+- used_count。
+- expires_at。
+
+25. redeem_code_uses 兑换记录表
+
+- id。
+- code_id。
+- user_id。
+- used_at。
+
+六、关键业务流程
+
+1. 注册流程
+
+1）用户输入邮箱、密码、可选推荐码。
+2）后端校验邮箱格式和密码长度。
+3）生成用户。
+4）生成钱包。
+5）生成用户资料。
+6）如果有推荐码，绑定推荐关系。
+7）发送邮箱验证邮件。
+8）进入新手引导。
+
+2. 登录流程
+
+1）用户输入邮箱和密码。
+2）后端验证密码。
+3）返回 access token 和 refresh token。
+4）前端加载用户资料、钱包、角色列表、任务状态。
+5）进入主界面。
+
+3. 聊天流程
+
+1）用户选择角色。
+2）前端创建或读取会话。
+3）用户发送消息。
+4）后端保存用户消息。
+5）后端组装角色提示词、历史摘要、最近消息。
+6）调用 AI 模型。
+7）流式返回角色回复。
+8）保存 AI 消息。
+9）根据规则扣除额度或金币。
+
+4. 魔法圈发布流程
+
+1）用户输入动态内容。
+2）可选上传图片。
+3）后端内容审核。
+4）保存动态。
+5）如果是每日任务，更新任务进度。
+6）返回新动态列表。
+
+5. 学院任务流程
+
+1）用户打开学院杯。
+2）读取每日任务。
+3）完成布告栏任务或写论文。
+4）发放学院分和金币。
+5）写入积分流水。
+6）刷新学院排行榜。
+
+6. 对角巷购买流程
+
+1）用户进入对角巷。
+2）选择商店。
+3）查看商品详情。
+4）点击购买。
+5）后端校验余额、库存、限购。
+6）扣除金币。
+7）写入订单。
+8）发放物品到背包。
+9）写入金币流水。
+10）前端提示购买成功。
+
+7. 龙蛋孵化流程
+
+1）用户在神奇动物园购买龙蛋。
+2）龙蛋进入背包。
+3）用户进入有求必应屋。
+4）如果房间已解锁，可以选择孵化龙蛋。
+5）创建 pet 记录，阶段为 egg。
+6）倒计时完成后变为 baby。
+7）用户每日喂食。
+8）每次喂食消耗 1 个苹果条。
+9）成长值达到要求后变为 adult。
+
+8. 金库签到流程
+
+1）用户打开金库。
+2）后端检查今天是否已签到。
+3）未签到则发放金币。
+4）已签到则提示明天再来领取。
+5）记录签到日志。
+
+9. 兑换码流程
+
+1）用户输入 CARD KEY。
+2）后端校验兑换码是否存在、过期、达到使用次数。
+3）校验该用户是否已使用。
+4）发放金币或道具。
+5）记录兑换。
+6）返回结果。
+
+七、AI 角色系统方案
+
+1. 角色提示词结构
+
+每个角色需要包含：
+- 角色身份。
+- 时间线。
+- 性格。
+- 说话风格。
+- 与用户关系。
+- 禁止事项。
+- 世界观边界。
+- 可触发剧情。
+- 记忆规则。
+
+2. 对话上下文
+
+建议分为三层：
+- 长期记忆：用户与角色的重要关系、偏好、剧情节点。
+- 会话摘要：最近一段聊天压缩总结。
+- 短期上下文：最近 10 到 30 条消息。
+
+3. 安全规则
+
+- 禁止冒充真实服务人员索要密码或支付信息。
+- 禁止诱导现实违法行为。
+- 未成年人角色需要严格内容边界。
+- 涉及充值、兑换、账号等功能时，AI 角色不得伪造系统消息。
+
+八、UI 设计方案
+
+1. 整体风格
+
+- 深色魔法主题。
+- 金色为主强调色。
+- 学院色用于积分和阵营。
+- 卡片边框使用暗金色。
+- 字体保持可读，不要过度装饰。
+
+2. 布局
+
+- 左侧固定导航栏。
+- 中间主内容区。
+- 底部四个主入口。
+- 弹窗用于金库、商品详情、设置。
+- 商店页面使用卡片网格。
+
+3. 登录页：九又四分之三站台动画方案
+
+参考方向：
+网易云音乐曾做过霍格沃茨相关彩蛋：音乐播放到约 40 秒后出现送信猫头鹰飞过，评论图标会变成一封带有“九又四分之三”提示的信件，并进一步引导用户发现评论区彩蛋。
+
+本项目可以把这个思路改造成“登录即穿过九又四分之三站台”的沉浸式入口。
+
+登录页主题：
+- 标题：九又四分之三站台。
+- 副标题：出示你的车票，进入猫头鹰邮局。
+- 背景：国王十字车站、砖墙、昏黄车站灯、远处蒸汽、霍格沃茨特快轮廓。
+- 核心视觉：砖墙中间挂着 Platform 9¾ 标牌。
+- 表单样式：录取通知书、车票或羊皮纸卡片。
+
+登录页文案：
+- 邮箱输入框：你的魔法邮箱。
+- 密码输入框：通行密语。
+- 登录按钮：穿过墙壁。
+- 注册入口：还没有车票？领取入学信。
+- 忘记密码：弄丢了通行密语？
+
+默认待机动画：
+- 砖墙轻微呼吸式暗光。
+- Platform 9¾ 标牌有微弱金光。
+- 背景有轻微蒸汽飘动。
+- 每隔一段时间有猫头鹰剪影飞过。
+- 信封图标偶尔闪烁，提示用户这是进入魔法世界的入口。
+
+输入阶段动画：
+- 用户聚焦邮箱或密码时，羊皮纸边缘亮起。
+- 输入密码时，魔法墨水或星点随光标出现。
+- 表单校验错误时，砖墙轻轻震动。
+
+登录成功动画：
+1）用户点击“穿过墙壁”。
+2）按钮进入检查状态，显示“正在核验车票...”。
+3）猫头鹰叼着信封从屏幕侧边飞过。
+4）行李车从画面下方推向砖墙。
+5）砖墙中心出现金色裂缝或旋涡。
+6）Platform 9¾ 标牌发光。
+7）墙体向两侧打开，或以镜头推进方式穿过砖墙。
+8）短暂白光、蒸汽、火车汽笛。
+9）进入主应用“猫头鹰邮局”。
+
+登录失败动画：
+- 砖墙反弹或轻微摇晃。
+- 文案：墙壁没有让你通过，请检查邮箱或密码。
+- 按钮恢复为“穿过墙壁”。
+- 不要清空用户已输入的邮箱。
+
+注册成功动画：
+- 猫头鹰投递录取通知书。
+- 通知书展开，显示“欢迎来到猫头鹰邮局”。
+- 再跳转到新手引导或主界面。
+
+忘记密码动画：
+- 变成“找回通行密语”的信件流程。
+- 用户输入邮箱后，猫头鹰飞出送信。
+- 文案：找回信已经交给猫头鹰，请留意邮箱。
+
+前端实现建议：
+- 使用 React + Framer Motion 实现场景转场。
+- 使用 CSS animation 实现猫头鹰、蒸汽、标牌发光。
+- 使用 transform: translate/scale/rotate 实现行李车推进。
+- 使用 clip-path、mask-image 或伪元素实现砖墙裂开。
+- 使用 local state 管理登录状态。
+
+动画状态设计：
+- idle：默认站台待机。
+- typing：用户正在输入。
+- checking：正在核验账号。
+- failed：登录失败。
+- entering：登录成功，穿墙动画播放中。
+
+示例状态逻辑：
+
+async function handleLogin() {
+  setLoginState("checking");
+  const result = await login(email, password);
+
+  if (!result.ok) {
+    setLoginState("failed");
+    return;
+  }
+
+  setLoginState("entering");
+  await wait(1200);
+  navigate("/app/owl");
+}
+
+建议动画时长：
+- 登录按钮检查态：300 到 500 毫秒。
+- 猫头鹰飞过：600 到 900 毫秒。
+- 行李车冲向墙：500 到 800 毫秒。
+- 砖墙打开或穿越：700 到 1200 毫秒。
+- 总跳转时间：1.2 到 2 秒。
+
+注意事项：
+- 不要直接复制网易云或其他产品的素材。
+- 可以借鉴“猫头鹰飞过、信封提示、九又四分之三暗示、进入隐藏世界”的交互结构。
+- 所有图形建议自绘或使用自有素材。
+- 动画必须可跳过，避免用户每次登录等待太久。
+- 移动端应简化粒子和背景动画，优先保证流畅。
+
+4. 必须优化的可用性
+
+- 首次进入必须有新手引导。
+- 当前金币要始终可见。
+- 购买前显示确认。
+- 商品用途必须写清楚。
+- 解锁条件必须可见。
+- 任务进度必须可见。
+- 错误提示必须清晰。
+
+九、开发阶段规划
+
+第一阶段：MVP
+
+目标：让用户能注册、登录、聊天、获得金币、浏览商店。
+
+功能：
+- 登录注册。
+- 忘记密码。
+- 用户资料。
+- 角色列表。
+- 私聊。
+- AI 回复。
+- 金库余额。
+- 每日签到。
+- 对角巷商品浏览。
+- 简单购买。
+- 背包。
+
+预计周期：2 到 4 周。
+
+第二阶段：社交与任务
+
+目标：增加日常留存。
+
+功能：
+- 魔法圈动态。
+- 图片上传。
+- 点赞评论。
+- 布告栏每日任务。
+- 写论文每日答题。
+- 学院积分。
+- 学院排行榜。
+
+预计周期：3 到 5 周。
+
+第三阶段：家园与养成
+
+目标：形成金币消耗和长期成长。
+
+功能：
+- 有求必应屋解锁。
+- 神奇动物园。
+- 龙蛋购买。
+- 龙蛋孵化。
+- 喂食。
+- 苹果条。
+- 家园装饰。
+
+预计周期：4 到 6 周。
+
+第四阶段：竞技玩法
+
+目标：增加中长期竞争和付费点。
+
+功能：
+- 决斗俱乐部。
+- 卡牌系统。
+- 魁地奇报名。
+- 魁地奇比赛。
+- 赛季奖励。
+
+预计周期：6 到 10 周。
+
+第五阶段：运营后台
+
+目标：方便长期运营。
+
+功能：
+- 用户管理。
+- 角色管理。
+- 商品管理。
+- 订单管理。
+- 兑换码管理。
+- 任务管理。
+- 公告管理。
+- 数据统计。
+- 内容审核。
+
+预计周期：3 到 5 周。
+
+十、运营方案
+
+1. 每日留存
+
+- 每日签到。
+- 每日任务 3 个。
+- 每日答题 1 次。
+- 魔法圈发动态奖励。
+- 角色聊天每日免费额度。
+
+2. 每周留存
+
+- 学院杯周榜。
+- 决斗俱乐部周赛。
+- 魁地奇周赛。
+- 限时商店。
+- 限时角色剧情。
+
+3. 付费或经济点
+
+- 金币包。
+- 订阅会员。
+- 限定角色。
+- 聊天额度。
+- 家园装饰。
+- 龙蛋。
+- 宠物食物。
+- 头像框。
+- 聊天皮肤。
+
+4. 推荐裂变
+
+- 推荐码。
+- 推荐好友注册奖励。
+- 好友首次充值奖励。
+- 推荐官等级。
+- 推荐排行榜。
+
+十一、风险与注意事项
+
+1. 版权风险
+
+如果使用哈利波特原作角色、学院、世界观和专有名词，存在版权与商标风险。
+
+可替代方案：
+- 改成原创魔法学校。
+- 使用相似但不直接复制的学院体系。
+- 角色改成原创巫师。
+- 保留魔法通讯、学院杯、商店、宠物养成等玩法结构。
+
+2. 支付风险
+
+- 充值必须明确价格。
+- 兑换必须记录流水。
+- 购买必须二次确认。
+- 未成年人消费需要限制。
+- 退款与客服规则要明确。
+
+3. AI 安全风险
+
+- AI 回复需要内容审核。
+- 角色不能伪装系统。
+- 角色不能索要密码、验证码、支付信息。
+- 聊天需要举报入口。
+
+4. 数据安全风险
+
+- 密码必须哈希。
+- 邮箱验证。
+- Token 过期刷新。
+- Redis 限流。
+- 兑换码防暴力破解。
+- 图片上传限制类型和大小。
+
+十二、最小可行版本推荐清单
+
+如果要最快做出可用版本，建议优先实现以下 15 个功能：
+
+1. 邮箱注册。
+2. 邮箱登录。
+3. 忘记密码。
+4. 用户资料。
+5. 角色列表。
+6. 角色私聊。
+7. AI 流式回复。
+8. 聊天记录保存。
+9. 金库余额。
+10. 每日签到。
+11. 对角巷商品列表。
+12. 商品购买。
+13. 背包。
+14. 魔法圈发布文字动态。
+15. 学院积分展示。
+
+十三、推荐目录结构
+
+hogwarts-simulator/
+  apps/
+    client/
+      src/
+        pages/
+        components/
+        stores/
+        api/
+        styles/
+    server/
+      src/
+        modules/
+          auth/
+          users/
+          characters/
+          chat/
+          wallet/
+          shop/
+          inventory/
+          tasks/
+          house-cup/
+          posts/
+          room/
+          pets/
+          admin/
+  packages/
+    shared/
+      src/
+        types/
+        constants/
+  prisma/
+    schema.prisma
+  docker-compose.yml
+  package.json
+
+十四、结论
+
+该项目最适合做成“AI 角色聊天 + 魔法学院生活模拟 + 轻度经营养成”的网页应用。
+
+核心闭环应为：
+
+聊天与动态产生沉浸感；
+任务和学院杯带来每日目标；
+金库和对角巷形成经济系统；
+有求必应屋和养龙提供长期养成；
+推荐官计划和魔法圈提供增长与社交传播。
+
+第一版不要一次性做完所有复杂系统，应先打通登录、聊天、金库、商店、任务、动态这六个关键模块。只要这六个模块稳定，后续的决斗、魁地奇、养龙和家园都可以逐步扩展。
+
+============================================================
+============================================================
+O、核心架构总览
+============================================================
+
+技术栈
+----------------------------------------
+
+  前端：React 18 + TypeScript + Vite 5 + Zustand + React Router 6
+  样式：Tailwind CSS 3 + CSS Modules
+  动画：Framer Motion 11 + CSS Animation
+  实时通信：WebSocket (Socket.IO) + SSE
+  后端：Node.js + Express + TypeScript
+  数据库：PostgreSQL 16 + Prisma ORM
+  缓存：Redis 7
+  AI：OpenAI / Claude / Gemini API
+  文件存储：Cloudflare R2 / S3
+  部署：Docker + Nginx
+  CI/CD：GitHub Actions
+
+数据流架构
+----------------------------------------
+
+  用户 -> React (Vite) -> API (Express) -> PostgreSQL / Redis
+  用户 -> WebSocket (Socket.IO) -> Chat Gateway -> AI Service -> LLM
+  用户 -> 文件上传 -> R2 / S3 Object Storage
+  Cron -> Task Scheduler -> House Cup / Pet Growth / Check-in Reset
+
+认证流程
+----------------------------------------
+
+  Email + Password -> JWT (access 15min + refresh 7day)
+  Refresh Token -> Redis allowlist -> rotate on use
+  WebSocket -> token handshake -> session map
+
+
+============================================================
+一、完整前端实现方案
+============================================================
+
+1.1 路由设计
+----------------------------------------
+
+  /login               - 登录页（九又四分之三站台）
+  /register            - 注册页
+  /forgot-password     - 忘记密码
+  /app/owl             - 猫头鹰主聊天页
+  /app/circle          - 魔法圈动态
+  /app/house-cup       - 学院杯
+  /app/room            - 有求必应屋
+  /app/diagon-alley    - 对角巷商店
+  /app/vault           - 古灵阁金库
+  /app/settings        - 个人设置
+  /app/profile         - 个人资料
+
+  ProtectedRoute 包裹 /app/* 路径, 未登录重定向到 /login
+  PublicRoute 包裹 /login /register /forgot-password, 已登录重定向到 /app/owl
+
+1.2 Zustand Store 设计
+----------------------------------------
+
+  authStore: { user, token, refreshToken, isAuthenticated, loginState }
+  chatStore: { conversations, activeConversation, messages, isStreaming, starredChars }
+  walletStore: { balance, transactions, todayCheckedIn }
+  characterStore: { characters, featured, searchResults, filters }
+  circleStore: { posts, loading, hasMore, page }
+  houseCupStore: { houses, tasks, quizzes, duelStatus }
+  roomStore: { unlocked, pets, feedStock, incubating }
+  shopStore: { shops, products, cart, purchasing }
+  inventoryStore: { items, categories, selectedCategory }
+  uiStore: { theme, sidebarOpen, toast, modal }
+
+1.3 API 封装层 (client.ts)
+----------------------------------------
+
+  - axios 实例, baseURL = VITE_API_URL
+  - 请求拦截器: 附加 Authorization Bearer token
+  - 响应拦截器: 401 时自动 refresh token
+  - refresh 成功: 重放原请求 / 失败: 跳转 /login
+
+1.4 WebSocket 实时通信
+----------------------------------------
+
+  建立连接: connect(url, token) -> 握手认证 -> 自动重连
+  事件: chat:send, chat:typing, message:new, message:stream, message:done, wallet:update
+
+1.5 组件状态覆盖
+----------------------------------------
+
+  每个组件必须覆盖: Loading | Empty | Error | Success
+
+============================================================
+二、完整后端实现方案
+============================================================
+
+2.1 API 路由清单
+----------------------------------------
+
+
+  Auth: POST /api/auth/register|login|refresh|forgot-password|reset-password|logout
+  Users: GET|PATCH /api/users/me, GET|PATCH /api/users/me/profile
+  Characters: GET /api/characters, GET /api/characters/:id, POST /api/characters/:id/star
+  Chat: GET|POST /api/conversations, GET|DELETE /api/conversations/:id
+         GET|POST /api/conversations/:id/messages
+  Circle: GET|POST /api/posts, DELETE /api/posts/:id
+          POST /api/posts/:id/like, GET|POST /api/posts/:id/comments
+  Wallet: GET /api/wallet/balance, GET /api/wallet/transactions
+          POST /api/wallet/check-in, GET /api/wallet/check-in/status, POST /api/wallet/redeem
+  House Cup: GET /api/houses, GET /api/houses/members
+             GET /api/tasks, POST /api/tasks/:id/complete
+             GET /api/quizzes, POST /api/quizzes/:id/answer
+  Duel: GET|POST /api/duel/*
+  Shop: GET /api/shops, GET /api/shops/:id/products, GET /api/products/:id
+        POST /api/orders, GET /api/orders
+  Inventory: GET /api/inventory, POST /api/inventory/:id/use
+  Room: GET /api/room/status, POST /api/room/incubate, POST /api/room/feed/:petId
+  Admin: GET|POST /api/admin/*
+
+2.2 响应规范
+----------------------------------------
+
+  成功: { success:true, data:{...} }  列表: { success:true, data:{items,total,page,pageSize} }
+  错误: { success:false, error:{code,message} }
+
+2.3 WebSocket Gateway
+----------------------------------------
+
+  handleConnection: 从 query.token 解析 JWT -> 加入房间(conversationId)
+  chat:send -> 保存消息 -> 广播 -> 调用 AI Service -> 流式返回
+  chat:typing -> 广播 typing (5s 去重)
+
+2.4 AI 服务流程
+----------------------------------------
+
+  1. 接收消息 + conversationId
+  2. 加载角色配置 + 对话历史(最近30条)
+  3. 构建上下文: system(2000t)+长期记忆(500t)+摘要(1500t)+近期(4000t)
+  4. 调用 LLM API (流式) -> WebSocket 逐 chunk 推送
+  5. 保存回复到数据库 -> 扣除额度
+============================================================
+三、数据库完整设计
+============================================================
+
+3.1 核心模型
+----------------------------------------
+
+  User: id, email, passwordHash, displayName, avatarUrl, house, team, grade, wizardTitle, bio, referralCode, referredBy, emailVerified, isAdmin
+  Wallet: id, userId(unique), balanceGalleons
+  WalletTransaction: id, userId, amount, type(earn/spend), source(check_in/task/purchase/referral/redeem), description, orderId
+  CheckIn: id, userId, date(unique per user per day), streak, reward
+  Character: id, name, avatarUrl, house, grade, title, description, systemPrompt, greeting, visibility, sortOrder
+  Conversation: id, type(private/group), title, ownerId, characterId, lastMessageAt
+  Message: id, conversationId, senderType(user/character/system), senderId, content, imageUrl, tokenCount
+  Post: id, userId, content, imageUrl, visibility
+  PostLike: id, postId, userId
+  PostComment: id, postId, userId, content
+  House: id, name, color, crestUrl, points
+  Task: id, title, description, type(daily/weekly/main), rewardGalleons, rewardPoints, resetRule, sortOrder
+  Shop: id, name, description, icon, sortOrder
+  Product: id, shopId, name, description, imageUrl, priceGalleons, itemType, itemPayloadJson, stock, limitPerUser
+  Order: id, userId, productId, quantity, totalPrice, status
+  RedeemCode: id, codeHash, rewardType, rewardPayload, maxUses, usedCount, expiresAt
+  InventoryItem: id, userId, itemType, itemId, quantity, metadataJson
+  Pet: id, userId, species, name, stage(egg/baby/adult), level, hunger
+
+
+============================================================
+四、AI 角色系统
+============================================================
+
+4.1 提示词模板
+----------------------------------------
+
+  身份: 你是{name}, {title}, 来自{house}学院, {grade}
+  性格: 根据角色定制
+  风格: 语气(casual/formal/playful/serious) + 常用语
+  规则: 1991年霍格沃茨, 不能透露是AI, 不能冒充系统, 不能索要密码
+
+4.2 好感度: 0陌生 | 21相识 | 41朋友 | 61密友 | 81特殊
+----------------------------------------
+
+  变化: +1~3/对话, +5~10/任务, +2~15/礼物, -1/天, -5~20/负面
+
+4.3 上下文: system(2000t)+长期记忆(500t)+摘要(1500t)+近期(4000t)=8000t
+----------------------------------------
+
+
+4.4 LLM: Claude Sonnet -> GPT-4o-mini -> Gemini Flash -> 熔断
+----------------------------------------
+
+
+============================================================
+五、UI/UX 完整设计
+============================================================
+
+5.1 设计系统
+----------------------------------------
+
+  主背景:#0a0a16 卡片:#1a1a3e 强调色:#d4a847(金) 文字:#e8e0d0
+  学院色: 格兰芬多(#ae0001) 斯莱特林(#2a623d) 拉文克劳(#222f5b) 赫奇帕奇(#ecb939)
+  字体: Cinzel Decorative(标题) | Cormorant Garamond(正文) | Inter(UI)
+
+5.2 登录页动画状态机
+----------------------------------------
+
+  idle -> typing -> checking -> entering(穿墙1.2s) | failed(震动3s)
+  idle:砖墙光效+猫头鹰  typing:羊皮纸发光+魔法粒子  checking:猫头鹰叼信+行李车  entering:墙体裂开+白闪+蒸汽
+  实现: Framer Motion AnimatePresence + CSS keyframes + clip-path
+
+5.3 页面布局
+----------------------------------------
+
+  桌面三栏: 左侧面板(品牌+角色列表) | 中间(主内容) | 底部导航
+  响应式: 平板两栏(768-1023px) | 手机单栏(<768px) + 底部导航全屏弹窗
+
+
+============================================================
+六、业务流程状态机
+============================================================
+
+6.1 登录: idle->typing->checking(API)->entering(穿墙动画)|failed(震动+3s)
+----------------------------------------
+
+
+6.2 聊天: idle->sending->streaming(流式)->done | WS重连: connected->disconnected->reconnecting
+----------------------------------------
+
+
+6.3 购买: browsing->confirming(弹窗)->purchasing(API)->success|failed(余额/库存/限购)
+----------------------------------------
+
+
+6.4 孵化: locked->incubating(24h)->hatching(破壳)->baby(喂食3天)->growing(7天)->adult
+----------------------------------------
+
+
+
+============================================================
+七、开发执行顺序(30天)
+============================================================
+
+Phase1-初始化(1天): monorepo+依赖+Vite+ESLint+Prisma+Docker+Git
+----------------------------------------
+
+
+Phase2-Auth(2-3天): 后端auth模块+JWT中间件 | 前端登录/注册/忘记密码页面
+----------------------------------------
+
+
+Phase3-聊天(4-7天): 后端characters+chat+AI | 前端Layout+Chat组件+WebSocket
+----------------------------------------
+
+
+Phase4-商店(8-11天): 后端wallet+shop+inventory | 前端金库+对角巷+背包
+----------------------------------------
+
+
+Phase5-社交(12-14天): 后端house-cup+tasks+circle | 前端学院杯+魔法圈
+----------------------------------------
+
+
+Phase6-养成(15-18天): 后端room+pets+cron | 前端有求必应屋+龙蛋+喂食
+----------------------------------------
+
+
+Phase7-竞技(19-24天): 后端duel+quidditch | 前端决斗+魁地奇
+----------------------------------------
+
+
+Phase8-后台(25-28天): admin模块+Docker+CI/CD+Sentry
+----------------------------------------
+
+
+Phase9-测试(29-30天): 集成测试+E2E+性能优化+安全审计
+----------------------------------------
+
+
+============================================================
+八、测试策略
+============================================================
+
+  单元测试(Vitest): 覆盖 stores, utils, validators
+  集成测试(Supertest): 覆盖 API endpoints
+  E2E(Playwright): 登录/注册/聊天/购买 核心流程
+  目标: 后端80%+ / 前端70%+ / E2E 10条路径
+
+
+============================================================
+九、部署与运维
+============================================================
+
+  前端: Cloudflare Pages / Vercel / Nginx
+  后端: Docker容器(Railway / Fly.io / 云服务器)
+  数据库: Supabase / Neon / RDS PostgreSQL
+  缓存: Upstash Redis
+  文件: Cloudflare R2 / AWS S3
+  CI/CD: GitHub Actions (lint+test -> build -> deploy -> smoke test)
+  监控: Sentry + Grafana + LLM调用指标(延迟/成功率/Tokens)
+
+
+============================================================
+十、运营方案
+============================================================
+
+  每日留存: 签到(5-50递增)+任务x3+答题x1+动态发布+聊天免费额度x20
+  每周留存: 学院杯周榜+决斗周赛+限时商店
+  经济: 签到/任务/答题/推荐/充值(收入) -> 聊天/商店/宠物/装饰(消耗)
+  推荐: 推荐码注册 -> 双方奖励, 推荐等级(普通~钻石)
+
+
+============================================================
+十一、风险评估
+============================================================
+
+  版权: 哈利波特角色有风险, 替代方案=原创魔法世界观
+  AI安全: Prompt injection防护 + 内容过滤 + 越狱检测
+  数据安全: bcrypt + JWT短时效 + 限流 + CSP + Prisma防注入
+  未成年人: 消费限制(单次<=50元,月<=200元)
+
+
+============================================================
+十二、验收标准
+============================================================
+
+  MVP 15项:
+  [ ] 邮箱注册: 邮箱+密码+推荐码(可选)
+  [ ] 邮箱登录: 邮箱+密码 -> token
+  [ ] 忘记密码: 邮箱验证找回
+  [ ] 用户资料: 查看/编辑个人信息
+  [ ] 角色列表: 浏览+搜索 AI 角色
+  [ ] 角色私聊: 选择角色发送消息
+  [ ] AI流式回复: 实时逐字生成
+  [ ] 聊天记录: 刷新后保留
+  [ ] 金库余额: 显示金币
+  [ ] 每日签到: 点击领金币
+  [ ] 对角巷: 浏览商品
+  [ ] 购买: 金币购买+背包发放
+  [ ] 背包: 查看道具
+  [ ] 魔法圈: 发布文字动态
+  [ ] 学院积分: 查看排行榜
+
+  体验标准:
+  - 新手引导(3步:选角色->发消息->签到)
+  - 页面加载<2s, AI回复首字<3s
+  - 所有操作有即时反馈(loading/成功/失败)
+  - 移动端可访问, 核心功能可用

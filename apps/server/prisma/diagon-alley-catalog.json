@@ -1,0 +1,693 @@
+[
+  {
+    "id": "flourish_and_blotts",
+    "name": "丽痕书店",
+    "description": "如果你想找书，这里应有尽有。",
+    "bgGradient": "from-amber-900 to-amber-700",
+    "itemCount": 11,
+    "items": [
+      {
+        "id": "book_history",
+        "name": "《魔法史》",
+        "description": "巴希达·巴沙特著。",
+        "price": 5,
+        "category": "BOOK",
+        "emoji": "📖"
+      },
+      {
+        "id": "book_potions",
+        "name": "《魔法药剂与药水》",
+        "description": "一年级新生的必备教材。",
+        "price": 7,
+        "category": "BOOK",
+        "emoji": "📗"
+      },
+      {
+        "id": "book_curses",
+        "name": "《强力药剂》",
+        "description": "禁书区的书籍，包含了复方汤剂的配方。",
+        "price": 10,
+        "category": "BOOK",
+        "emoji": "📕"
+      },
+      {
+        "id": "book_hogwarts",
+        "name": "《霍格沃茨：一段校史》",
+        "description": "赫敏最喜欢的书。",
+        "price": 6,
+        "category": "BOOK",
+        "emoji": "🏰"
+      },
+      {
+        "id": "book_quibbler",
+        "name": "《唱唱反调》",
+        "description": "卢娜父亲主编的杂志。",
+        "price": 2,
+        "category": "BOOK",
+        "emoji": "📰"
+      },
+      {
+        "id": "book_quidditch",
+        "name": "《神奇的魁地奇球》",
+        "description": "肯尼沃西·惠斯普著，介绍魁地奇的历史与规则。",
+        "price": 5,
+        "category": "BOOK",
+        "emoji": "🏟️"
+      },
+      {
+        "id": "book_fantastic_beasts",
+        "name": "《神奇动物在哪里》",
+        "description": "纽特·斯卡曼德的杰作。",
+        "price": 6,
+        "category": "BOOK",
+        "emoji": "🦎"
+      },
+      {
+        "id": "book_beedle_bard",
+        "name": "《诗翁彼豆故事集》",
+        "description": "古老的巫师童话故事集。",
+        "price": 8,
+        "category": "BOOK",
+        "emoji": "📜"
+      },
+      {
+        "id": "book_numerology",
+        "name": "《数字占卜与语法》",
+        "description": "高深莫测的算术占卜学参考书。",
+        "price": 7,
+        "category": "BOOK",
+        "emoji": "🔢"
+      },
+      {
+        "id": "book_monster_book",
+        "name": "《妖怪们的妖怪书》",
+        "description": "记得抚摸它的脊背，不然它会咬人。",
+        "price": 8,
+        "category": "BOOK",
+        "emoji": "👹"
+      },
+      {
+        "id": "book_twelve_failsafe",
+        "name": "《迷倒女巫的十二个制胜法宝》",
+        "description": "教你如何不用咒语赢得女巫芳心。",
+        "price": 8,
+        "category": "BOOK",
+        "emoji": "💘"
+      }
+    ]
+  },
+  {
+    "id": "florean_fortescue",
+    "name": "弗洛林冷饮店",
+    "description": "这里有全伦敦最好吃的冰淇淋。",
+    "bgGradient": "from-pink-600 to-purple-600",
+    "itemCount": 2,
+    "items": [
+      {
+        "id": "icecream_chocolate",
+        "name": "巧克力覆盆子冰淇淋",
+        "description": "甜美可口，哈利的最爱。",
+        "price": 2,
+        "category": "FOOD",
+        "emoji": "🍨"
+      },
+      {
+        "id": "tea_cakes",
+        "name": "烤面包与茶",
+        "description": "简单的下午茶。",
+        "price": 2,
+        "category": "FOOD",
+        "emoji": "☕"
+      }
+    ]
+  },
+  {
+    "id": "weasleys_wizard_wheezes",
+    "name": "韦斯莱笑话商店",
+    "description": "为什么担心神秘人？你应该关心便秘仁！",
+    "bgGradient": "from-orange-600 to-red-600",
+    "itemCount": 6,
+    "items": [
+      {
+        "id": "skiving_snackbox",
+        "name": "速效逃课糖",
+        "description": "生病还是逃课？你自己选。",
+        "price": 4,
+        "category": "PRANK",
+        "emoji": "🍬"
+      },
+      {
+        "id": "daydream_charm",
+        "name": "白日梦咒",
+        "description": "韦斯莱魔法把戏坊最新产品。可在梦境群聊中开启\"韦斯莱白日梦剧场\"。永久有效，限购一个。",
+        "price": 100,
+        "category": "PRANK",
+        "emoji": "💭"
+      },
+      {
+        "id": "dragon_tongue_translator",
+        "name": "龙语翻译器",
+        "description": "韦斯莱兄弟的半靠谱新发明，可以把成年龙的低吼翻成你能读懂的话。永久有效，限购一个。",
+        "price": 100,
+        "category": "PRANK",
+        "emoji": "🐉"
+      },
+      {
+        "id": "extendable_ears",
+        "name": "伸缩耳",
+        "description": "窃听此处的对话。",
+        "price": 5,
+        "category": "PRANK",
+        "emoji": "👂"
+      },
+      {
+        "id": "love_potion",
+        "name": "迷情剂",
+        "description": "世界上最有效的爱情魔药（虽然是假的）。",
+        "price": 8,
+        "category": "PRANK",
+        "emoji": "💗"
+      },
+      {
+        "id": "forged_leave_permit",
+        "name": "麦格教授签字的请假条（伪造）",
+        "description": "一张做工精巧的伪造请假条，可用于北欧小木屋度假。永久有效，限购一份。",
+        "price": 100,
+        "category": "PRANK",
+        "emoji": "🧾"
+      }
+    ]
+  },
+  {
+    "id": "quidditch_supplies",
+    "name": "魁地奇精品店",
+    "description": "为了那一瞬间的金色飞贼。",
+    "bgGradient": "from-red-800 to-yellow-600",
+    "itemCount": 8,
+    "items": [
+      {
+        "id": "snitch",
+        "name": "金色飞贼模型",
+        "description": "一个不会飞的复制品，适合摆设。",
+        "price": 12,
+        "category": "QUIDDITCH",
+        "emoji": "✨"
+      },
+      {
+        "id": "broom_care_kit",
+        "name": "飞天扫帚护理套装",
+        "description": "包括一罐木柄上光剂和剪枝剪。",
+        "price": 8,
+        "category": "QUIDDITCH",
+        "emoji": "🧹"
+      },
+      {
+        "id": "firebolt_model",
+        "name": "火弩箭模型",
+        "description": "昂贵飞天扫帚的微缩模型。",
+        "price": 25,
+        "category": "QUIDDITCH",
+        "emoji": "🧹"
+      },
+      {
+        "id": "nimbus_2000",
+        "name": "光轮2000",
+        "description": "拥有它，你将无视一切魁地奇关卡，并在危机中总能全身而退。",
+        "price": 100,
+        "category": "QUIDDITCH",
+        "emoji": "🧹"
+      },
+      {
+        "id": "nimbus_2001",
+        "name": "光轮2001",
+        "description": "光轮系列最新型号。装备后魁地奇比赛判定成功率额外 +10%。",
+        "price": 500,
+        "category": "QUIDDITCH",
+        "emoji": "🧹"
+      },
+      {
+        "id": "firebolt",
+        "name": "火弩箭",
+        "description": "当今世界最顶级的竞速扫帚。装备后魁地奇比赛判定成功率额外 +20%。",
+        "price": 1000,
+        "category": "QUIDDITCH",
+        "emoji": "🚀"
+      },
+      {
+        "id": "custom_broom",
+        "name": "高级定制飞天扫帚",
+        "description": "顶级扫帚工匠为你量身打造的专属竞速扫帚，可自定义名称和描述。",
+        "price": 1314,
+        "category": "QUIDDITCH",
+        "emoji": "🚀"
+      },
+      {
+        "id": "cannons_badge",
+        "name": "查里火炮队队徽",
+        "description": "罗恩最喜欢的球队。",
+        "price": 6,
+        "category": "QUIDDITCH",
+        "emoji": "🏅"
+      }
+    ]
+  },
+  {
+    "id": "borgin_and_burkes",
+    "name": "博金-博克",
+    "description": "翻倒巷唯一的选择。小心点。",
+    "bgGradient": "from-gray-900 to-black",
+    "itemCount": 6,
+    "items": [
+      {
+        "id": "cursed_necklace",
+        "name": "蛋白石项链（仿品）",
+        "description": "看起来很危险，其实只是玻璃做的。",
+        "price": 15,
+        "category": "DARK_ARTS",
+        "emoji": "📿"
+      },
+      {
+        "id": "hand_of_glory",
+        "name": "光荣之手（蜡烛）",
+        "description": "只为持有者照明。",
+        "price": 18,
+        "category": "DARK_ARTS",
+        "emoji": "🕯️"
+      },
+      {
+        "id": "blood_pact",
+        "name": "血盟吊坠",
+        "description": "象征着两个伟大巫师之间牢不可破的誓言。",
+        "price": 20,
+        "category": "DARK_ARTS",
+        "emoji": "🩸"
+      },
+      {
+        "id": "imperio_scroll",
+        "name": "夺魂咒卷轴残页",
+        "description": "禁忌魔法的古老残页。使用后可强制接受约会或立即解除禁闭。",
+        "price": 10,
+        "category": "DARK_ARTS",
+        "emoji": "📜"
+      },
+      {
+        "id": "snowy_owl_club_invitation",
+        "name": "雪鸮俱乐部邀请函",
+        "description": "由五大家族签发的神秘邀请函，凭此可进入位于霍格莫德的雪鸮俱乐部。永久有效，限购一张。",
+        "price": 100,
+        "category": "DARK_ARTS",
+        "emoji": "🦉"
+      },
+      {
+        "id": "slughorn_invitation",
+        "name": "斯拉格霍恩的邀请函",
+        "description": "一封神秘的烫金邀请函，据说能让你进入霍格沃茨最精英的社交圈。",
+        "price": 100,
+        "category": "DARK_ARTS",
+        "emoji": "💌"
+      }
+    ]
+  },
+  {
+    "id": "leaky_cauldron",
+    "name": "破釜酒吧",
+    "description": "通往对角巷的入口，来一杯吗？",
+    "bgGradient": "from-stone-800 to-orange-900",
+    "itemCount": 3,
+    "items": [
+      {
+        "id": "butterbeer",
+        "name": "黄油啤酒",
+        "description": "温暖，起泡，这才是魔法界的味道。",
+        "price": 3,
+        "category": "FOOD",
+        "emoji": "🍺"
+      },
+      {
+        "id": "firewhisky",
+        "name": "火焰威士忌",
+        "description": "给勇敢者的烈酒。",
+        "price": 6,
+        "category": "FOOD",
+        "emoji": "🥃"
+      },
+      {
+        "id": "chicken_wings",
+        "name": "招牌鸡翅根",
+        "description": "赛格娜丝同学倾情安利。",
+        "price": 4,
+        "category": "FOOD",
+        "emoji": "🍗"
+      }
+    ]
+  },
+  {
+    "id": "partridge_cauldron_shop",
+    "name": "帕特奇坩埚店",
+    "description": "锅底越亮，爆炸时越有面子。店主拒绝承担眉毛损失。",
+    "bgGradient": "from-stone-700 to-yellow-900",
+    "itemCount": 4,
+    "items": [
+      {
+        "id": "pewter_cauldron",
+        "name": "锡镴坩埚",
+        "description": "基础款，最便宜也最稳。熬得慢，但不太容易把自己炸成烟花。",
+        "price": 30,
+        "category": "MISC",
+        "emoji": "⚗️"
+      },
+      {
+        "id": "brass_cauldron",
+        "name": "黄铜坩埚",
+        "description": "速度比锡镴快，脾气比纯铜好。很适合想体面做药酒的人。",
+        "price": 80,
+        "category": "MISC",
+        "emoji": "🥘"
+      },
+      {
+        "id": "copper_cauldron",
+        "name": "纯铜坩埚",
+        "description": "速度最快，容错最低。属于“今晚出酒，明早换锅”的刺激路线。",
+        "price": 120,
+        "category": "MISC",
+        "emoji": "🔥"
+      },
+      {
+        "id": "silver_cauldron",
+        "name": "纯银坩埚",
+        "description": "贵得像一场贵族晚宴，但特别容易熬出高品质药膳。",
+        "price": 300,
+        "category": "MISC",
+        "emoji": "🍽️"
+      }
+    ]
+  },
+  {
+    "id": "magical_menagerie",
+    "name": "神奇动物园",
+    "description": "这里有各种各样的魔法生物用品。",
+    "bgGradient": "from-purple-800 to-pink-900",
+    "itemCount": 9,
+    "items": [
+      {
+        "id": "owl_nuts",
+        "name": "猫头鹰坚果",
+        "description": "让你的海德薇保持健康。",
+        "price": 2,
+        "category": "PET",
+        "emoji": "🥜"
+      },
+      {
+        "id": "rat_tonic",
+        "name": "强力耗子补药",
+        "description": "对斑斑可能会有点用。",
+        "price": 4,
+        "category": "PET",
+        "emoji": "🐀"
+      },
+      {
+        "id": "hairball_cleaner",
+        "name": "毛团清理剂",
+        "description": "克鲁克山需要的。",
+        "price": 3,
+        "category": "PET",
+        "emoji": "🐱"
+      },
+      {
+        "id": "pygmy_puff",
+        "name": "侏儒蒲",
+        "description": "毛茸茸的可爱宠物。",
+        "price": 5,
+        "category": "PET",
+        "emoji": "🧶"
+      },
+      {
+        "id": "apple_strip",
+        "name": "苹果条",
+        "description": "新鲜苹果制成的零食条，许多魔法生物都爱吃。",
+        "price": 2,
+        "category": "PET",
+        "emoji": "🍎"
+      },
+      {
+        "id": "black_lake_mysterious_gift",
+        "name": "黑湖居民的神秘馈赠",
+        "description": "水下生物们不要的“小麻烦”，在草药学家的眼里却是能让植物加速生长的“无价之宝”。所有在水族缸里安家的生物，都会为你产出这份惊喜。永久有效，限购一个。",
+        "price": 100,
+        "category": "MISC",
+        "emoji": "🫧"
+      },
+      {
+        "id": "welsh_green_egg",
+        "name": "威尔士绿龙蛋",
+        "description": "蛋壳泛着苔绿光泽，像把整片湿润山谷缩成了一颗小小心跳。",
+        "price": 100,
+        "category": "MISC",
+        "emoji": "🥚"
+      },
+      {
+        "id": "norwegian_ridgeback_egg",
+        "name": "挪威脊背龙蛋",
+        "description": "暗银纹路像冰原上的风，抱在手里会觉得这枚蛋正悄悄蓄力。",
+        "price": 100,
+        "category": "MISC",
+        "emoji": "🥚"
+      },
+      {
+        "id": "hungarian_horntail_egg",
+        "name": "匈牙利树峰龙蛋",
+        "description": "黑金色蛋壳像收起尖刺的小风暴，安静时也带着不好惹的气势。",
+        "price": 100,
+        "category": "MISC",
+        "emoji": "🥚"
+      }
+    ]
+  },
+  {
+    "id": "madam_malkins",
+    "name": "摩金夫人长袍专卖店",
+    "description": "各式长袍，应有尽有。",
+    "bgGradient": "from-blue-800 to-indigo-900",
+    "itemCount": 11,
+    "items": [
+      {
+        "id": "silver_hairclip",
+        "name": "纯银发夹",
+        "description": "优雅精致的饰品。",
+        "price": 10,
+        "category": "ACCESSORY",
+        "emoji": "🧷"
+      },
+      {
+        "id": "lace_handkerchief",
+        "name": "蕾丝手帕",
+        "description": "老派但实用。",
+        "price": 8,
+        "category": "ACCESSORY",
+        "emoji": "🧣"
+      },
+      {
+        "id": "dragon_hide_gloves",
+        "name": "龙皮手套",
+        "description": "保护你的双手免受魔药伤害。",
+        "price": 12,
+        "category": "ACCESSORY",
+        "emoji": "🧤"
+      },
+      {
+        "id": "bowtie",
+        "name": "男士领结",
+        "description": "舞会必备。",
+        "price": 8,
+        "category": "ACCESSORY",
+        "emoji": "🎀"
+      },
+      {
+        "id": "ball_dress_normal",
+        "name": "普通礼服",
+        "description": "简洁大方的舞会礼服，适合日常宴会。魅力 +20。",
+        "price": 52,
+        "category": "ACCESSORY",
+        "emoji": "👗"
+      },
+      {
+        "id": "ball_dress_fancy",
+        "name": "华丽礼服",
+        "description": "精心裁剪的华丽礼服，点缀着魔法刺绣。魅力 +200。",
+        "price": 520,
+        "category": "ACCESSORY",
+        "emoji": "👗"
+      },
+      {
+        "id": "ball_dress_luxury",
+        "name": "奢华礼服",
+        "description": "顶级面料打造的奢华礼服，可定制样式。魅力 +400。",
+        "price": 1314,
+        "category": "ACCESSORY",
+        "emoji": "✨"
+      },
+      {
+        "id": "swimsuit",
+        "name": "泳装",
+        "description": "采用防水魔法面料制成的泳装，可定制样式。",
+        "price": 100,
+        "category": "ACCESSORY",
+        "emoji": "👙"
+      },
+      {
+        "id": "custom_school_robe",
+        "name": "定制巫师袍",
+        "description": "采用火龙皮内衬和高级真丝定制的豪华巫师袍，可定制样式。",
+        "price": 1314,
+        "category": "ACCESSORY",
+        "emoji": "🧥"
+      },
+      {
+        "id": "couple_ring",
+        "name": "对戒",
+        "description": "一对精致的魔法对戒，据说戴上后会微微发光。仅可赠送给恋人或暧昧对象。",
+        "price": 520,
+        "category": "ACCESSORY",
+        "emoji": "💍"
+      },
+      {
+        "id": "diamond_ring",
+        "name": "鸽子蛋",
+        "description": "摩金夫人压箱底的钻戒。与恋人好感度达到1000后，可绑定一个家园存档并整理恋爱相册。永久有效，每枚戒指只能绑定一个存档。",
+        "price": 1314,
+        "category": "ACCESSORY",
+        "emoji": "💎"
+      }
+    ]
+  },
+  {
+    "id": "honeydukes",
+    "name": "蜂蜜公爵（对角巷分店）",
+    "description": "霍格莫德著名糖果店的唯一指定分店。",
+    "bgGradient": "from-pink-500 to-green-500",
+    "itemCount": 7,
+    "items": [
+      {
+        "id": "bertie_botts",
+        "name": "比比多味豆",
+        "description": "小心耳屎味！",
+        "price": 1,
+        "category": "FOOD",
+        "emoji": "🫘"
+      },
+      {
+        "id": "drooble_gum",
+        "name": "吹宝超级泡泡糖",
+        "description": "可以让满屋子飘满风信子颜色的泡泡。",
+        "price": 1,
+        "category": "FOOD",
+        "emoji": "🫧"
+      },
+      {
+        "id": "licorice_wands",
+        "name": "甘草魔杖",
+        "description": "经典的魔法糖果。",
+        "price": 2,
+        "category": "FOOD",
+        "emoji": "🪄"
+      },
+      {
+        "id": "cockroach_clusters",
+        "name": "蟑螂堆",
+        "description": "别被名字吓到了，其实大概还不错。",
+        "price": 2,
+        "category": "FOOD",
+        "emoji": "🪳"
+      },
+      {
+        "id": "chocolate_frogs",
+        "name": "巧克力蛙",
+        "description": "附赠一张著名巫师卡片。",
+        "price": 2,
+        "category": "FOOD",
+        "emoji": "🐸"
+      },
+      {
+        "id": "fizzing_whizzbees",
+        "name": "滋滋蜂蜜糖",
+        "description": "吃完可以离地漂浮几英寸。",
+        "price": 3,
+        "category": "FOOD",
+        "emoji": "🐝"
+      },
+      {
+        "id": "birthday_cake",
+        "name": "生日蛋糕",
+        "description": "只有在特殊的日子里才有意义。",
+        "price": 50,
+        "category": "FOOD",
+        "emoji": "🎂"
+      }
+    ]
+  },
+  {
+    "id": "slug_jiggers_apothecary",
+    "name": "斯拉格·吉格斯药店",
+    "description": "对角巷最专业的药材店，提供各种稀有魔药。",
+    "bgGradient": "from-emerald-800 to-teal-900",
+    "itemCount": 7,
+    "items": [
+      {
+        "id": "felix_felicis",
+        "name": "福灵剂",
+        "description": "液体好运。服用后 24 小时内可强制约会并完美完成，偷取复方汤剂也 100% 成功。",
+        "price": 10,
+        "category": "POTION",
+        "emoji": "🍀"
+      },
+      {
+        "id": "true_amortentia",
+        "name": "真·迷情剂",
+        "description": "传说中的禁药，能让人产生无法抑制的疯狂迷恋，持续 24 小时。",
+        "price": 50,
+        "category": "FOOD",
+        "emoji": "💜"
+      },
+      {
+        "id": "amortentia_antidote",
+        "name": "迷情剂解药",
+        "description": "送给中了迷情剂的人，可解除疯狂迷恋效果。",
+        "price": 50,
+        "category": "FOOD",
+        "emoji": "💚"
+      },
+      {
+        "id": "memory_potion",
+        "name": "遗忘药水",
+        "description": "禁忌药水。能抹掉阵营对立、修罗场和旧冲突等敌对触发事实，解除 -10 锁定，但不会把你当成陌生人。",
+        "price": 50,
+        "category": "FOOD",
+        "emoji": "🧪"
+      },
+      {
+        "id": "phoenix_tears",
+        "name": "凤凰眼泪",
+        "description": "具有极强的治愈能力。服用后瞬间移除\"受伤\"状态。",
+        "price": 20,
+        "category": "POTION",
+        "emoji": "💧"
+      },
+      {
+        "id": "mooncalf_juice",
+        "name": "莫特拉鼠汁",
+        "description": "神奇生物的治愈分泌物。服用后瞬间移除\"黑魔法诅咒\"状态。",
+        "price": 20,
+        "category": "POTION",
+        "emoji": "🐁"
+      },
+      {
+        "id": "sleekeazy_potion",
+        "name": "速顺滑发剂",
+        "description": "让你的头发变得光滑亮丽，赫敏的秘密武器。",
+        "price": 5,
+        "category": "ACCESSORY",
+        "emoji": "🧴"
+      }
+    ]
+  }
+]

@@ -1,0 +1,239 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    min-width: 320px;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+  body {
+    @apply bg-hogwarts-bg text-hogwarts-paper font-body min-h-screen;
+    overflow-x: hidden;
+  }
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #c5a05933 transparent;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply px-6 py-3 bg-hogwarts-gold text-black font-bold rounded-lg
+           hover:bg-gold-light transition-colors duration-200
+           disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  .btn-ghost {
+    @apply px-4 py-2 border border-hogwarts-gold text-hogwarts-gold rounded-lg
+           hover:bg-hogwarts-gold/10 transition-colors duration-200;
+  }
+  .card {
+    @apply bg-black/40 border border-hogwarts-gold/40 rounded-lg p-4;
+  }
+  .input-field {
+    @apply w-full px-4 py-3 bg-black/60 border border-hogwarts-gold/40 rounded-lg
+           text-hogwarts-paper placeholder:text-hogwarts-gold/40
+           focus:outline-none focus:border-hogwarts-gold focus:ring-1 focus:ring-hogwarts-gold/30
+           transition-all duration-200;
+  }
+  .nav-link {
+    @apply flex items-center gap-3 px-4 py-3 rounded-lg text-hogwarts-paper/70
+           hover:text-hogwarts-gold hover:bg-hogwarts-gold/10 transition-all duration-200;
+  }
+  .nav-link.active {
+    @apply text-hogwarts-gold bg-hogwarts-gold/15 border-l-2 border-hogwarts-gold;
+  }
+  .text-balance {
+    text-wrap: balance;
+  }
+  .vault-8bit :is(.text-hogwarts-gold, .text-hogwarts-goldDark) {
+    font-family: 'Press Start 2P', monospace;
+    letter-spacing: 0;
+    line-height: 1.65;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.55);
+  }
+  .vault-8bit .text-hogwarts-goldDark {
+    color: #7f5f18;
+  }
+  .vault-8bit .text-hogwarts-gold {
+    color: #f0c04a;
+  }
+  .magic-newspaper {
+    isolation: isolate;
+    box-shadow:
+      inset 0 0 64px rgba(68, 43, 18, 0.24),
+      0 28px 80px rgba(0, 0, 0, 0.38);
+  }
+  .magic-newspaper-grain {
+    pointer-events: none;
+    mix-blend-mode: multiply;
+    opacity: 0.42;
+    background:
+      radial-gradient(circle at 12% 18%, rgba(88, 56, 28, 0.18) 0 1px, transparent 1px 7px),
+      radial-gradient(circle at 82% 26%, rgba(18, 18, 18, 0.12) 0 1px, transparent 1px 8px),
+      repeating-linear-gradient(92deg, rgba(89, 64, 31, 0.08) 0 1px, transparent 1px 5px);
+    animation: paper-breathe 8s ease-in-out infinite;
+  }
+  .magic-headline {
+    animation: ink-jitter 4.8s steps(2, end) infinite;
+  }
+  .magic-photo::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+      linear-gradient(110deg, transparent 0 35%, rgba(255, 246, 196, 0.18) 45%, transparent 56% 100%),
+      repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.12) 0 1px, transparent 1px 4px);
+    animation: photo-sheen 5.5s ease-in-out infinite;
+  }
+  .newspaper-fold {
+    background-image:
+      linear-gradient(90deg, rgba(90, 61, 30, 0.18), transparent 9%, transparent 91%, rgba(90, 61, 30, 0.14)),
+      radial-gradient(circle at 20% 18%, rgba(255, 255, 255, 0.22), transparent 18%),
+      radial-gradient(circle at 82% 76%, rgba(82, 55, 24, 0.16), transparent 22%);
+    animation: newspaper-float 9s ease-in-out infinite;
+  }
+  .newspaper-creases {
+    pointer-events: none;
+    opacity: 0.34;
+    background:
+      linear-gradient(90deg, transparent 0 49.5%, rgba(67, 45, 23, 0.24) 50%, transparent 50.5% 100%),
+      linear-gradient(180deg, transparent 0 38%, rgba(67, 45, 23, 0.14) 38.2%, transparent 38.8% 100%),
+      repeating-linear-gradient(7deg, transparent 0 38px, rgba(98, 67, 35, 0.08) 39px, transparent 40px 82px);
+  }
+  .newspaper-photo {
+    filter: grayscale(0.92) contrast(1.12) sepia(0.18);
+  }
+  .moving-photo-halftone {
+    mix-blend-mode: screen;
+    opacity: 0.28;
+    background:
+      radial-gradient(circle, rgba(255, 255, 255, 0.5) 0 1px, transparent 1px 5px),
+      repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.18) 0 1px, transparent 1px 6px);
+    background-size: 7px 7px, auto;
+    animation: moving-photo-noise 1.2s steps(2, end) infinite;
+  }
+  .register-sparkles {
+    pointer-events: none;
+    opacity: 0.38;
+    background:
+      radial-gradient(circle at 12% 18%, rgba(246, 215, 148, 0.85) 0 1px, transparent 1px 90px),
+      radial-gradient(circle at 74% 12%, rgba(246, 215, 148, 0.65) 0 1px, transparent 1px 120px),
+      radial-gradient(circle at 86% 58%, rgba(197, 160, 89, 0.85) 0 1px, transparent 1px 96px),
+      radial-gradient(circle at 32% 78%, rgba(246, 215, 148, 0.55) 0 1px, transparent 1px 110px);
+    animation: register-sparkle-drift 9s ease-in-out infinite;
+  }
+  .register-letter {
+    border-radius: 6px;
+    background-image:
+      linear-gradient(105deg, rgba(255, 255, 255, 0.28), transparent 28%, rgba(93, 55, 21, 0.1) 100%),
+      repeating-linear-gradient(0deg, rgba(83, 55, 25, 0.07) 0 1px, transparent 1px 17px),
+      radial-gradient(circle at 18% 24%, rgba(255, 244, 190, 0.42), transparent 23%),
+      radial-gradient(circle at 80% 80%, rgba(117, 72, 28, 0.16), transparent 25%);
+  }
+}
+
+@media (max-width: 640px) {
+  .btn-primary,
+  .btn-ghost,
+  .input-field {
+    border-radius: 6px;
+  }
+
+  .vault-8bit :is(.text-hogwarts-gold, .text-hogwarts-goldDark) {
+    font-size: 0.82em;
+    line-height: 1.8;
+    word-break: break-word;
+  }
+}
+
+@keyframes paper-breathe {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+    opacity: 0.38;
+  }
+  50% {
+    transform: translate3d(-1px, 1px, 0);
+    opacity: 0.5;
+  }
+}
+
+@keyframes ink-jitter {
+  0%,
+  88%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  90% {
+    transform: translate3d(1px, 0, 0);
+  }
+  92% {
+    transform: translate3d(-1px, 1px, 0);
+  }
+  94% {
+    transform: translate3d(0, -1px, 0);
+  }
+}
+
+@keyframes photo-sheen {
+  0%,
+  100% {
+    transform: translateX(-55%);
+    opacity: 0.25;
+  }
+  45%,
+  55% {
+    transform: translateX(35%);
+    opacity: 0.55;
+  }
+}
+
+@keyframes newspaper-float {
+  0%,
+  100% {
+    transform: rotate(0deg) translate3d(0, 0, 0);
+  }
+  50% {
+    transform: rotate(-0.12deg) translate3d(0, -2px, 0);
+  }
+}
+
+@keyframes moving-photo-noise {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+    opacity: 0.24;
+  }
+  50% {
+    transform: translate3d(-2px, 1px, 0);
+    opacity: 0.34;
+  }
+}
+
+@keyframes register-sparkle-drift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+    opacity: 0.3;
+  }
+  50% {
+    transform: translate3d(-8px, 6px, 0);
+    opacity: 0.48;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .register-sparkles,
+  .register-letter,
+  .magic-newspaper-grain,
+  .magic-headline,
+  .magic-photo::after,
+  .newspaper-fold,
+  .moving-photo-halftone {
+    animation: none;
+  }
+}

@@ -1,0 +1,199 @@
+Owl Ping 猫头鹰通讯器 UI 方案
+
+一、定位
+
+在当前霍格沃茨模拟器内新增一个独立入口，作为「猫头鹰通讯器 / Owl Ping」页面。
+整体不是普通列表页，而是一个拟手机系统界面：锁屏、上滑解锁、桌面应用、底部 Dock、分页应用区。
+
+适合放置的入口：
+1. 左侧导航新增「猫头鹰通讯器」。
+2. 或放入顶部/左上角外部链接下拉中的本地功能项。
+3. 后续也可以作为每日新闻、猫头鹰邮局、个人档案、钱包等模块的统一启动器。
+
+二、整体视觉
+
+主题关键词：
+珍珠粉、猫头鹰品牌、玻璃 Dock、圆角 App 图标、柔和泡泡感、移动端桌面。
+
+主容器结构参考：
+main.stage
+section.phone-frame
+
+主容器 class 参考：
+stage wallpaper-pearl theme-dock-glass theme-icons-owl-brand theme-bubble-soft theme-bubble-density-comfortable theme-space-soft
+
+页面背景：
+1. 外层可使用浅粉、珍珠白、淡紫的柔和渐变。
+2. phone-frame 居中，模拟手机屏幕。
+3. 桌面内容不要做成普通卡片堆叠，要像手机桌面一样铺在屏幕内。
+
+三、锁屏页
+
+初始进入页面显示锁屏。
+
+内容结构：
+1. 顶部品牌胶囊：Owl Ping。
+2. 中央大时间，例如 22:17。
+3. 副标题：猫头鹰呼叫。
+4. 底部提示：向上滑动解锁。
+
+样式参考：
+1. 锁屏背景：粉色，约 rgb(254, 140, 189)。
+2. 文字：白色。
+3. 品牌胶囊：
+   - 背景 rgba(255, 255, 255, 0.18)
+   - 边框 rgba(255, 255, 255, 0.62)
+   - 圆角 999px
+   - 可放猫头鹰 logo 小图标
+4. 解锁交互：
+   - 支持鼠标拖拽上滑。
+   - 也可以先做成点击「向上滑动解锁」触发，后续再补拖拽。
+
+四、解锁后的桌面
+
+解锁后进入手机桌面。
+
+顶部状态栏：
+1. class 参考：status-bar。
+2. 高度约 56px。
+3. 背景 rgba(255, 255, 255, 0.88)。
+4. 左侧显示 Owl Ping。
+5. 右侧可以放 Wi-Fi、电量、时间等小图标。
+
+桌面时间区：
+1. class 参考：desktop-time-hero。
+2. 显示当前时间。
+3. 显示日期，例如 6月5日星期五。
+
+应用区：
+1. class 参考：app-grid。
+2. 桌面宽屏下 4 列。
+3. App 按钮透明背景。
+4. 图标尺寸约 58px x 58px。
+5. 图标圆角约 20px。
+6. 文字颜色使用深灰 rgb(60, 61, 68)，保证清晰。
+
+第一页应用：
+1. owl chat
+2. Owl Feed
+3. Owl Circle
+4. 日记本
+5. 事件卡
+6. Owl Space
+7. 嗅嗅钱包
+8. Owl Shop
+
+第二页应用：
+1. 设置
+2. 玩机中心
+3. 猫头鹰档案
+4. 世界书
+5. 装扮工坊
+6. 开发者模式
+
+分页点：
+1. class 参考：desktop-page-dots。
+2. 当前页圆点为胶囊形，例如 22px x 8px。
+3. 非当前页为小圆点，例如 8px x 8px。
+
+底部 Dock：
+1. class 参考：desktop-dock。
+2. 背景 rgba(255, 255, 255, 0.76)。
+3. 边框可使用淡粉色半透明。
+4. 圆角约 28px。
+5. 高度约 82px。
+6. 4 个固定入口：
+   - owl chat
+   - 嗅嗅钱包
+   - 设置
+   - 猫头鹰档案
+
+五、图标颜色建议
+
+整体不要单一粉色，可混合粉、紫、蓝、橙。
+
+参考色：
+1. owl chat：rgb(244, 58, 145)
+2. Owl Feed：rgb(240, 91, 156)
+3. Owl Circle：rgb(240, 91, 156)
+4. 日记本：rgb(217, 138, 95)
+5. 事件卡：rgb(239, 117, 170)
+6. Owl Space：rgb(183, 138, 223)
+7. 嗅嗅钱包：rgb(121, 171, 199)
+8. Owl Shop：rgb(242, 107, 159)
+9. 设置：rgb(168, 160, 216)
+10. 玩机中心：rgb(106, 167, 216)
+11. 猫头鹰档案：rgb(225, 102, 153)
+12. 世界书：rgb(125, 152, 200)
+13. 装扮工坊：rgb(200, 137, 223)
+14. 开发者模式：rgb(100, 116, 139)
+
+六、可复用资源
+
+Owl Ping 站点资源线索：
+1. Logo：
+   https://owlping.yuyanjia.top/brand/owl-ping-mark.png
+2. 64px 图标：
+   https://owlping.yuyanjia.top/brand/owl-ping-icon-64.png
+3. 192px 图标：
+   https://owlping.yuyanjia.top/brand/owl-ping-icon-192.png
+4. 启动画面：
+   https://owlping.yuyanjia.top/brand/owl-ping-splash-portrait.png
+5. CSS：
+   https://owlping.yuyanjia.top/assets/index-DDzp6mdp.css
+6. JS：
+   https://owlping.yuyanjia.top/assets/index-D3iW0piC.js
+
+注意：
+如果后续要下载或本地化资源，建议只下载图片资源作为视觉参考。
+不要直接复制整站 JS 逻辑，当前项目应按自己的 React/Vite 结构重写组件。
+
+七、当前项目实现建议
+
+建议新增：
+1. 页面文件：
+   apps/client/src/pages/OwlPingPage.tsx
+2. 路由：
+   /app/owl-ping
+3. 导航：
+   AppLayout 内新增「猫头鹰通讯器」
+4. 样式：
+   可放入 apps/client/src/styles/index.css
+
+组件拆分建议：
+1. OwlPingPage
+2. OwlPingLockScreen
+3. OwlPingDesktop
+4. OwlPingAppIcon
+5. OwlPingDock
+6. OwlPingAppModal
+
+第一版功能：
+1. 进入页面先显示锁屏。
+2. 点击或上滑后进入桌面。
+3. 应用图标点击后打开小弹窗。
+4. Dock 图标点击同样打开对应弹窗。
+5. 分页点可切换第一页和第二页。
+
+第二版功能：
+1. owl chat 对接猫头鹰邮局或聊天模块。
+2. 嗅嗅钱包跳转巫师银行/金库。
+3. 猫头鹰档案打开个人档案编辑弹窗。
+4. Owl Shop 跳转对角巷商城。
+5. Owl Feed 或 Owl Circle 对接每日新闻/圈子页面。
+
+八、与现有霍格沃茨模拟器的融合
+
+对应关系：
+1. 嗅嗅钱包 -> 巫师银行 / 金库
+2. Owl Shop -> 对角巷商店
+3. 猫头鹰档案 -> 个人档案 / 入学登记表
+4. Owl Feed -> 每日新闻
+5. Owl Circle -> 社交圈
+6. owl chat -> 猫头鹰邮局
+7. 日记本 -> 学生日志
+8. 世界书 -> 世界观资料
+9. 设置 -> 用户设置
+
+整体目标：
+让 Owl Ping 成为模拟器内的「魔法手机启动器」，把已有功能用更沉浸的方式串起来。

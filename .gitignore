@@ -1,0 +1,11 @@
+node_modules/
+dist/
+.env
+*.log
+.idea/
+_capture/
+.codex-run/
+apps/client/public/audio/*.mp3
+*.db
+*.tsbuildinfo
+apps/client/test.txt

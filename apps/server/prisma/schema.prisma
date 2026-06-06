@@ -1,0 +1,518 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// ── 用户与认证 ──
+model User {
+  id           String   @id @default(uuid())
+  email        String   @unique
+  passwordHash String   @map("password_hash")
+  displayName  String?  @map("display_name")
+  avatarUrl    String?  @map("avatar_url")
+  referralCode String?  @unique @map("referral_code")
+  referredBy   String?  @map("referred_by")
+  role         String   @default("user")
+  status       String   @default("active")
+  isEmailVerified Boolean @default(false) @map("is_email_verified")
+  createdAt    DateTime @default(now()) @map("created_at")
+  updatedAt    DateTime @updatedAt @map("updated_at")
+
+  profile      UserProfile?
+  wallet       Wallet?
+
+  @@map("users")
+}
+
+model UserProfile {
+  id              String @id @default(uuid())
+  userId          String @unique @map("user_id")
+  nickname        String?
+  wizardTitle     String? @map("wizard_title")
+  house           String? // 格兰芬多/斯莱特林/拉文克劳/赫奇帕奇
+  houseLocked     Boolean @default(false) @map("house_locked")
+  grade           String? // 一年级～七年级
+  team            String? // 魁地奇球队
+  bio             String?
+  selectedBadge   String? @map("selected_badge")
+  selectedFrame   String? @map("selected_frame")
+  forestPatrolProgress Int @default(0) @map("forest_patrol_progress")
+  injuryEndTime   DateTime? @map("injury_end_time")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("user_profiles")
+}
+
+// ── 钱包与经济 ──
+model Wallet {
+  id             String   @id @default(uuid())
+  userId         String   @unique @map("user_id")
+  balanceGalleons Int     @default(0) @map("balance_galleons")
+  createdAt      DateTime @default(now()) @map("created_at")
+  updatedAt      DateTime @updatedAt @map("updated_at")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("wallets")
+}
+
+model WalletTransaction {
+  id          String   @id @default(uuid())
+  userId      String   @map("user_id")
+  amount      Int      // 正数为收入，负数为支出
+  type        String   // signin / purchase / referral / admin / spend
+  source      String?  // 来源描述
+  description String?
+  orderId     String?  @map("order_id")
+  createdAt   DateTime @default(now()) @map("created_at")
+
+  @@map("wallet_transactions")
+}
+
+model RechargePackage {
+  id             String   @id @default(uuid())
+  name           String
+  amountCents    Int      @map("amount_cents")
+  galleons       Int
+  bonusGalleons  Int      @default(0) @map("bonus_galleons")
+  isActive       Boolean  @default(true) @map("is_active")
+  sortOrder      Int      @default(0) @map("sort_order")
+  createdAt      DateTime @default(now()) @map("created_at")
+  updatedAt      DateTime @updatedAt @map("updated_at")
+
+  orders RechargeOrder[]
+
+  @@map("recharge_packages")
+}
+
+model RechargeOrder {
+  id              String    @id @default(uuid())
+  orderNo         String    @unique @map("order_no")
+  userId          String    @map("user_id")
+  packageId       String?   @map("package_id")
+  amountCents     Int       @map("amount_cents")
+  galleons        Int
+  bonusGalleons   Int       @default(0) @map("bonus_galleons")
+  channel         String    @default("virtual")
+  status          String    @default("pending")
+  virtualPayKey   String?   @unique @map("virtual_pay_key")
+  providerTradeNo String?   @unique @map("provider_trade_no")
+  paidAt          DateTime? @map("paid_at")
+  createdAt       DateTime  @default(now()) @map("created_at")
+  updatedAt       DateTime  @updatedAt @map("updated_at")
+
+  package RechargePackage? @relation(fields: [packageId], references: [id])
+
+  @@index([userId, status])
+  @@index([createdAt])
+  @@map("recharge_orders")
+}
+
+model PaymentCallbackLog {
+  id          String   @id @default(uuid())
+  channel     String
+  orderNo     String?  @map("order_no")
+  rawPayload   String   @map("raw_payload")
+  signatureOk Boolean  @default(false) @map("signature_ok")
+  handled     Boolean  @default(false)
+  error       String?
+  createdAt   DateTime @default(now()) @map("created_at")
+
+  @@index([orderNo])
+  @@map("payment_callback_logs")
+}
+
+model AdminAuditLog {
+  id          String   @id @default(uuid())
+  adminUserId String   @map("admin_user_id")
+  action      String
+  targetType  String?  @map("target_type")
+  targetId    String?  @map("target_id")
+  beforeJson  String?  @map("before_json")
+  afterJson   String?  @map("after_json")
+  ip          String?
+  createdAt   DateTime @default(now()) @map("created_at")
+
+  @@index([adminUserId])
+  @@index([targetType, targetId])
+  @@map("admin_audit_logs")
+}
+
+// ── 签到记录 ──
+model SignInRecord {
+  id        String   @id @default(uuid())
+  userId    String   @map("user_id")
+  signedAt  DateTime @default(now()) @map("signed_at")
+  reward    Int      @default(0)
+
+  @@map("sign_in_records")
+}
+
+// ── AI 角色 ──
+model Character {
+  id           String   @id @default(uuid())
+  name         String
+  avatarUrl    String?  @map("avatar_url")
+  house        String?  // 学院归属
+  grade        String?
+  title        String?  // 称号
+  description  String?
+  systemPrompt String?  @map("system_prompt")
+  greeting     String?  // 首次对话时的开场白
+  visibility   String   @default("public") // public / hidden
+  sortOrder    Int      @default(0) @map("sort_order")
+  createdAt    DateTime @default(now()) @map("created_at")
+
+  conversations Conversation[]
+
+  @@map("characters")
+}
+
+// ── 会话 ──
+model Conversation {
+  id          String   @id @default(uuid())
+  type        String   @default("private") // private / group
+  title       String?
+  ownerId     String?  @map("owner_id")
+  characterId String?  @map("character_id")
+  createdAt   DateTime @default(now()) @map("created_at")
+
+  character Character? @relation(fields: [characterId], references: [id])
+  members   ConversationMember[]
+  messages  Message[]
+
+  @@map("conversations")
+}
+
+model ConversationMember {
+  conversationId String @map("conversation_id")
+  memberType     String @map("member_type") // user / character
+  memberId       String @map("member_id")
+  role           String @default("member")
+
+  conversation Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+
+  @@id([conversationId, memberId])
+  @@map("conversation_members")
+}
+
+model Message {
+  id             String   @id @default(uuid())
+  conversationId String   @map("conversation_id")
+  senderType     String   @map("sender_type") // user / character / system
+  senderId       String   @map("sender_id")
+  content        String
+  imageUrl       String?  @map("image_url")
+  tokenCount     Int?     @default(0) @map("token_count")
+  createdAt      DateTime @default(now()) @map("created_at")
+
+  conversation Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+
+  @@map("messages")
+}
+
+// ── 魔法圈动态 ──
+model Post {
+  id         String   @id @default(uuid())
+  userId     String   @map("user_id")
+  content    String
+  imageUrl   String?  @map("image_url")
+  visibility String   @default("public") // public / friends / private
+  createdAt  DateTime @default(now()) @map("created_at")
+  updatedAt  DateTime @updatedAt @map("updated_at")
+
+  likes    PostLike[]
+  comments PostComment[]
+
+  @@map("posts")
+}
+
+model PostLike {
+  id        String   @id @default(uuid())
+  postId    String   @map("post_id")
+  userId    String   @map("user_id")
+  createdAt DateTime @default(now()) @map("created_at")
+
+  post Post @relation(fields: [postId], references: [id], onDelete: Cascade)
+
+  @@unique([postId, userId])
+  @@map("post_likes")
+}
+
+model PostComment {
+  id        String   @id @default(uuid())
+  postId    String   @map("post_id")
+  userId    String   @map("user_id")
+  content   String
+  createdAt DateTime @default(now()) @map("created_at")
+
+  post Post @relation(fields: [postId], references: [id], onDelete: Cascade)
+
+  @@map("post_comments")
+}
+
+// ── 学院系统 ──
+model House {
+  id        String @id @default(uuid())
+  name      String @unique // 格兰芬多/斯莱特林/拉文克劳/赫奇帕奇
+  color     String // 主题色 hex
+  crestUrl  String? @map("crest_url")
+  points    Int    @default(0)
+
+  pointLogs HousePointLog[]
+
+  @@map("houses")
+}
+
+model HousePointLog {
+  id          String   @id @default(uuid())
+  userId      String   @map("user_id")
+  house       String
+  points      Int
+  source      String   // task / quiz / duel / quidditch / daily / bulletin
+  description String?
+  createdAt   DateTime @default(now()) @map("created_at")
+
+  houseRef House? @relation(fields: [house], references: [name])
+
+  @@map("house_point_logs")
+}
+
+// ── 学院杯每日答题记录 ──
+model HouseCupQuizRecord {
+  id        String   @id @default(uuid())
+  userId    String   @map("user_id")
+  house     String
+  dayKey    String   @map("day_key")   // YYYY-MM-DD
+  score     Int      @default(0)       // 答对数 0-10
+  points    Int      @default(0)       // 换算后的学院分 -20 ~ +20
+  grade     String   // O / E / A / P / D / T
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@unique([userId, dayKey])
+  @@map("house_cup_quiz_records")
+}
+
+// ── 布告栏每日任务状态 ──
+model BulletinTaskState {
+  id          String   @id @default(uuid())
+  userId      String   @map("user_id")
+  dayKey      String   @map("day_key")   // YYYY-MM-DD
+  tasksJson   String   @map("tasks_json") // JSON array of bulletin tasks
+  quizCompleted Boolean @default(false) @map("quiz_completed")
+  completedDifficulties String @default("[]") @map("completed_difficulties") // JSON array of completed difficulty levels
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  @@unique([userId, dayKey])
+  @@map("bulletin_task_states")
+}
+
+// ── 任务系统 ──
+model Task {
+  id            String @id @default(uuid())
+  title         String
+  description   String?
+  type          String // daily / weekly / main / side
+  rewardGalleons Int  @default(0) @map("reward_galleons")
+  rewardPoints   Int   @default(0) @map("reward_points")
+  targetCount    Int   @default(1) @map("target_count")
+  resetRule      String? @map("reset_rule") // daily / weekly / none
+
+  userTasks UserTask[]
+
+  @@map("tasks")
+}
+
+model UserTask {
+  id          String    @id @default(uuid())
+  userId      String    @map("user_id")
+  taskId      String    @map("task_id")
+  progress    Int       @default(0)
+  status      String    @default("in_progress") // in_progress / completed / claimed
+  completedAt DateTime? @map("completed_at")
+
+  task Task @relation(fields: [taskId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, taskId])
+  @@map("user_tasks")
+}
+
+// ── 论文答题 ──
+model Quiz {
+  id          String @id @default(uuid())
+  question    String
+  optionsJson String @map("options_json") // JSON array
+  answer      String
+  rewardPoints Int  @default(0) @map("reward_points")
+  rewardGalleons Int @default(0) @map("reward_galleons")
+
+  @@map("quizzes")
+}
+
+// ── 学院杯知识竞赛题库 ──
+model HouseCupQuizQuestion {
+  id          String @id @default(uuid())
+  question    String
+  optionsJson String @map("options_json") // JSON array
+  answer      String // A/B/C/D
+
+  @@map("house_cup_quiz_questions")
+}
+
+// ── 商城系统 ──
+model Shop {
+  id          String @id @default(uuid())
+  name        String
+  description String?
+  icon        String?
+  sortOrder   Int    @default(0) @map("sort_order")
+
+  products Product[]
+
+  @@map("shops")
+}
+
+model Product {
+  id             String   @id @default(uuid())
+  shopId         String   @map("shop_id")
+  name           String
+  description    String?
+  priceGalleons  Int      @map("price_galleons")
+  itemType       String?  @map("item_type") // pet_egg / pet_food / frame / badge / title / furniture / consumable
+  itemPayloadJson String? @map("item_payload_json")
+  imageUrl       String?  @map("image_url")
+  stock          Int?     // null 表示不限
+  limitPerUser   Int?     @map("limit_per_user")
+  availableFrom  DateTime? @map("available_from")
+  availableTo    DateTime? @map("available_to")
+  isActive       Boolean  @default(true) @map("is_active")
+  sortOrder      Int      @default(0) @map("sort_order")
+  createdAt      DateTime @default(now()) @map("created_at")
+
+  shop Shop @relation(fields: [shopId], references: [id])
+
+  @@map("products")
+}
+
+model Order {
+  id          String   @id @default(uuid())
+  userId      String   @map("user_id")
+  productId   String   @map("product_id")
+  quantity    Int      @default(1)
+  totalPrice  Int      @map("total_price")
+  status      String   @default("completed") // completed / refunded
+  createdAt   DateTime @default(now()) @map("created_at")
+
+  @@map("orders")
+}
+
+model Inventory {
+  id         String   @id @default(uuid())
+  userId     String   @map("user_id")
+  itemType   String   @map("item_type")
+  itemId     String   @map("item_id")
+  quantity   Int      @default(1)
+  metadataJson String? @map("metadata_json")
+  createdAt  DateTime @default(now()) @map("created_at")
+
+  @@unique([userId, itemType, itemId])
+  @@map("inventory")
+}
+
+// ── 家园宠物 ──
+model Pet {
+  id         String   @id @default(uuid())
+  userId     String   @map("user_id")
+  species    String   // dragon / cat / owl / toad
+  name       String?
+  stage      String   @default("egg") // egg / baby / adult
+  level      Int      @default(1)
+  hunger     Int      @default(100) // 饱腹度
+  hatchedAt  DateTime? @map("hatched_at")
+  lastFedAt  DateTime? @map("last_fed_at")
+  createdAt  DateTime @default(now()) @map("created_at")
+
+  @@map("pets")
+}
+
+model RoomUnlock {
+  id        String   @id @default(uuid())
+  userId    String   @map("user_id")
+  route     String   // da / spew
+  progress  Int      @default(0)
+  unlockedAt DateTime? @map("unlocked_at")
+
+  @@unique([userId, route])
+  @@map("room_unlocks")
+}
+
+// ── 推荐与兑换 ──
+model ReferralReward {
+  id             String   @id @default(uuid())
+  referrerId     String   @map("referrer_id")
+  referredUserId String   @map("referred_user_id")
+  rewardType     String   @map("reward_type") // galleons / item
+  rewardAmount   Int      @default(0) @map("reward_amount")
+  status         String   @default("pending") // pending / paid
+  createdAt      DateTime @default(now()) @map("created_at")
+
+  @@map("referral_rewards")
+}
+
+model RedeemCode {
+  id              String    @id @default(uuid())
+  codeHash        String    @unique @map("code_hash")
+  rewardType      String    @map("reward_type") // galleons / item
+  rewardPayloadJson String? @map("reward_payload_json")
+  maxUses         Int       @default(1) @map("max_uses")
+  usedCount       Int       @default(0) @map("used_count")
+  expiresAt       DateTime? @map("expires_at")
+  createdAt       DateTime  @default(now()) @map("created_at")
+
+  uses RedeemCodeUse[]
+
+  @@map("redeem_codes")
+}
+
+model RedeemCodeUse {
+  id      String   @id @default(uuid())
+  codeId  String   @map("code_id")
+  userId  String   @map("user_id")
+  usedAt  DateTime @default(now()) @map("used_at")
+
+  code RedeemCode @relation(fields: [codeId], references: [id], onDelete: Cascade)
+
+  @@unique([codeId, userId])
+  @@map("redeem_code_uses")
+}
+
+// ── 密码重置 ──
+model PasswordReset {
+  id        String    @id @default(uuid())
+  userId    String    @map("user_id")
+  token     String    @unique
+  used      Boolean   @default(false)
+  issuedAt  DateTime  @default(now()) @map("issued_at")
+  expiresAt DateTime  @map("expires_at")
+  usedAt    DateTime? @map("used_at")
+
+  @@map("password_resets")
+}
+
+// ── 角色好感度 ──
+model CharacterAffinity {
+  id          String   @id @default(uuid())
+  userId      String   @map("user_id")
+  characterId String   @map("character_id")
+  affinity    Int      @default(0)   // 0-100
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  @@unique([userId, characterId])
+  @@map("character_affinities")
+}

@@ -15,12 +15,14 @@ function getQualityTier(): QualityTier {
   if (typeof window === 'undefined') return 'medium';
 
   const nav = navigator as Navigator & { deviceMemory?: number };
+  const publicHost = window.location.hostname.endsWith('.pages.dev') || window.location.hostname.endsWith('.github.io');
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const coarsePointer = window.matchMedia('(pointer: coarse)').matches;
   const narrow = window.innerWidth < 768;
   const lowMemory = typeof nav.deviceMemory === 'number' && nav.deviceMemory <= 4;
   const lowCores = navigator.hardwareConcurrency <= 4;
 
+  if (publicHost) return 'low';
   if (reducedMotion || coarsePointer || narrow || lowMemory || lowCores) return 'low';
   if (navigator.hardwareConcurrency <= 8 || window.innerWidth < 1280) return 'medium';
   return 'high';
@@ -28,12 +30,12 @@ function getQualityTier(): QualityTier {
 
 function getTierConfig(tier: QualityTier) {
   if (tier === 'high') {
-    return { dpr: Math.min(window.devicePixelRatio || 1, 1.8), particles: 220, rails: true, frameSkip: 1 };
+    return { dpr: Math.min(window.devicePixelRatio || 1, 1.6), particles: 180, rails: true, frameSkip: 1 };
   }
   if (tier === 'medium') {
-    return { dpr: Math.min(window.devicePixelRatio || 1, 1.35), particles: 130, rails: true, frameSkip: 1 };
+    return { dpr: Math.min(window.devicePixelRatio || 1, 1.2), particles: 92, rails: true, frameSkip: 2 };
   }
-  return { dpr: 1, particles: 62, rails: false, frameSkip: 2 };
+  return { dpr: 0.9, particles: 28, rails: false, frameSkip: 4 };
 }
 
 export default function ThreeLaunchScene({
@@ -64,7 +66,11 @@ export default function ThreeLaunchScene({
       if (stopped) return;
 
       const config = getTierConfig(tier);
-      const renderer = new THREE.WebGLRenderer({ antialias: tier !== 'low', alpha: true, powerPreference: 'high-performance' });
+      const renderer = new THREE.WebGLRenderer({
+        antialias: tier !== 'low',
+        alpha: true,
+        powerPreference: tier === 'low' ? 'low-power' : 'high-performance',
+      });
       renderer.setPixelRatio(config.dpr);
       renderer.setClearColor(0x090706, 1);
       host.appendChild(renderer.domElement);

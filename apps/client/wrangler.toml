@@ -1,0 +1,11 @@
+name = "hogwarts"
+compatibility_date = "2026-06-06"
+pages_build_output_dir = "dist"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "hogwarts-db"
+database_id = "0c54223b-93fa-4ef5-bca6-977051cef085"
+
+[vars]
+ALLOWED_ORIGINS = "https://hogwarts-38z.pages.dev,https://hogwarts-simulator.pages.dev,http://localhost:5173,http://localhost:5174"
